@@ -1,0 +1,29 @@
+﻿.timeline {
+    $borderColor: #e5e5e5;
+    $timelineBorder: 1px solid $borderColor;
+
+    .timeline-item {
+        position: relative;
+        margin-left: 24px;
+        border-left: $timelineBorder;
+    }
+
+    .timeline-item-connector {
+        position: absolute;
+        width: 24px;
+        height: 2px;
+        top: 76px;
+        border-bottom: $timelineBorder;
+    }
+
+    .timeline-item-body {
+        padding: 1px 0 1px 24px;
+    }
+
+    .entry {
+        padding: 24px;
+        margin: 24px 0;
+        border-radius: 4px;
+        border: $timelineBorder;
+    }
+}
