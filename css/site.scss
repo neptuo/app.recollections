@@ -1,5 +1,9 @@
 ﻿@import "_colors.scss";
 
+blockquote {
+    color: $placeholder-color;
+}
+
 .clear {
     clear: both;
 }
@@ -10,7 +14,9 @@
 
 @import "_loading.scss";
 @import "_inline-editor.scss";
+@import "_file-upload.scss";
 
 @import "_accounts.scss";
 @import "_timeline.scss";
 @import "_entry-detail.scss";
+@import "_image-detail.scss"; 

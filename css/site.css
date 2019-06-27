@@ -1,4 +1,7 @@
-﻿.clear {
+﻿blockquote {
+  color: #aaaaaa; }
+
+.clear {
   clear: both; }
 
 .body-offset {
@@ -34,7 +37,7 @@
     top: 19px;
     height: 26px; } }
 
-.inline-editor .oi {
+.inline-editor .oi-check {
   color: var(--green); }
 
 .inline-editor .form-control {
@@ -43,12 +46,28 @@
 .inline-editor textarea {
   min-height: 400px; }
 
-.inline-editor-viewmode .oi {
-  display: none;
-  color: #aaaaaa; }
+.inline-editor-viewmode .inline-editor-value {
+  position: relative; }
 
-.inline-editor-viewmode:hover .oi {
+.inline-editor-viewmode .oi-pencil {
+  display: none;
+  color: #aaaaaa;
+  font-size: 16px;
+  left: -24px;
+  position: absolute;
+  top: 2px; }
+
+.inline-editor-viewmode:hover .oi-pencil, .inline-editor-viewmode:active .oi-pencil {
   display: inline-block; }
+
+h2 .inline-editor-viewmode .oi {
+  top: 14px; }
+
+.inline-markdown .inline-submit {
+  margin-top: -60px; }
+
+.file-upload input[type=file] {
+  display: none; }
 
 .component-login form {
   width: 100%;
@@ -105,5 +124,35 @@
   margin: 24px 0; }
   .entry-detail .text {
     margin: 24px 0; }
+  .entry-detail .images {
+    margin: 24px 0; }
+    .entry-detail .images .image {
+      display: flex;
+      align-items: center;
+      padding-top: 15px;
+      padding-bottom: 15px; }
+      .entry-detail .images .image a {
+        display: block;
+        margin: 0 auto; }
+      .entry-detail .images .image img {
+        max-width: 100%;
+        max-height: 160px; }
   .entry-detail .placeholder {
+    color: #aaaaaa; }
+
+.image-detail {
+  padding: 24px;
+  margin: 24px 0; }
+  .image-detail .text {
+    margin: 24px 0; }
+  .image-detail .image {
+    margin: 24px 0;
+    display: flex;
+    align-items: center; }
+    .image-detail .image img {
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+      margin: 0 auto; }
+  .image-detail .placeholder {
     color: #aaaaaa; }
