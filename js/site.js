@@ -135,6 +135,10 @@ window.InlineMarkdownEdit = {
     },
     SetValue: function (textAreaId, value) {
         if (InlineMarkdownEdit.editors[textAreaId] != null) {
+            if (value == null) {
+                value = "";
+            }
+
             return InlineMarkdownEdit.editors[textAreaId].value(value);
         }
     },
@@ -146,6 +150,23 @@ window.InlineMarkdownEdit = {
 }
 
 window.InlineDateEdit = {
+    Initialize: function (inputId, format) {
+        $('#' + inputId).datepicker({
+            format: format.toLowerCase(),
+            autoclose: true,
+            todayHighlight: true,
+            todayBtn: "linked"
+        });
+    },
+    Destroy: function (inputId) {
+        $('#' + inputId).datepicker("destroy");
+    },
+    GetValue: function (inputId) {
+        return $('#' + inputId).val();
+    }
+}
+
+window.DatePicker = {
     Initialize: function (inputId, format) {
         $('#' + inputId).datepicker({
             format: format.toLowerCase(),
