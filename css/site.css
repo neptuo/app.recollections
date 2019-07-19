@@ -7,6 +7,9 @@
 .body-offset {
   margin-top: 24px; }
 
+.hidden, .inline-editor .hidden {
+  display: none; }
+
 .loading-bar {
   display: inline-block;
   position: relative;
@@ -39,6 +42,9 @@
 
 .inline-editor .oi-check {
   color: var(--green); }
+
+.inline-editor .oi-x {
+  color: var(--danger); }
 
 .inline-editor .form-control {
   font-size: inherit; }
@@ -156,3 +162,6 @@ h2 .inline-editor-viewmode .oi {
       margin: 0 auto; }
   .image-detail .placeholder {
     color: #aaaaaa; }
+
+.version {
+  color: #aaaaaa; }

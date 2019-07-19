@@ -48,17 +48,33 @@ window.FileUpload = {
         var input = form.find("input[type=file]");
 
         var uploadIndex = -1;
-        function uploadStep() {
-            uploadIndex++;
+        function uploadError(statusCode, message) {
+            var total = input[0].files.length;
+            form[0].reset();
+            DotNet.invokeMethodAsync("Recollections.Blazor.Components", "FileUpload_OnError", formId, statusCode, total, uploadIndex);
+        }
 
+        function uploadCallback(total, completed) {
+            DotNet.invokeMethodAsync("Recollections.Blazor.Components", "FileUpload_OnCompleted", formId, total, completed);
+        }
+
+        function uploadStep() {
             var files = input[0].files;
+
+            uploadIndex++;
+            uploadCallback(files.length, uploadIndex);
+
             if (files.length > uploadIndex) {
-                FileUpload.UploadFile(files[uploadIndex], form[0].action, bearerToken, uploadStep, uploadStep);
-            }
-            else {
+                FileUpload.UploadFile(
+                    files[uploadIndex],
+                    form[0].action,
+                    bearerToken,
+                    uploadStep,
+                    uploadError
+                );
+            } else {
                 uploadIndex = -1;
                 form[0].reset();
-                DotNet.invokeMethodAsync("Recollections.Blazor.Components", "FileUpload_OnCompleted", formId);
             }
         }
 
@@ -70,7 +86,7 @@ window.FileUpload = {
             uploadStep();
         });
     },
-    UploadFile: function(file, url, bearerToken, onCompleted, onError, onProgress) {
+    UploadFile: function (file, url, bearerToken, onCompleted, onError, onProgress) {
         var formData = new FormData();
         formData.append("file", file, file.customName || file.name);
 
@@ -109,7 +125,7 @@ window.FileUpload = {
 
         currentRequest.send(formData);
     }
-}
+};
 
 window.InlineMarkdownEdit = {
     editors: {},
@@ -118,12 +134,37 @@ window.InlineMarkdownEdit = {
             return;
         }
 
-        var editor = new SimpleMDE({
+        var editor = new EasyMDE({
             element: document.getElementById(textAreaId),
             autofocus: true,
             forceSync: true,
             spellChecker: false,
-            toolbar: ["heading-2", "heading-3", "|", "bold", "italic", "|", "unordered-list", "ordered-list", "|", "link", "quote", "horizontal-rule"]
+            toolbar: [
+                "heading-2",
+                "heading-3",
+                "|",
+                "bold",
+                "italic",
+                "|",
+                "unordered-list",
+                "ordered-list",
+                "|",
+                "link",
+                "quote",
+                "horizontal-rule",
+                {
+                    name: "save",
+                    className: "fa fa-star hidden",
+                    title: "Save",
+                    action: function (editor) {
+                        var value = editor.value();
+                        DotNet.invokeMethodAsync("Recollections.Blazor.Components", "InlineMarkdownEdit_OnSave", textAreaId, value);
+                    }
+                }
+            ],
+            shortcuts: {
+                "save": "Ctrl-Enter"
+            }
         });
         InlineMarkdownEdit.editors[textAreaId] = editor;
     },
