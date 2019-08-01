@@ -50,8 +50,13 @@ window.FileUpload = {
         var uploadIndex = -1;
         function uploadError(statusCode, message) {
             var total = input[0].files.length;
-            form[0].reset();
+            resetForm();
             DotNet.invokeMethodAsync("Recollections.Blazor.Components", "FileUpload_OnError", formId, statusCode, total, uploadIndex);
+        }
+
+        function resetForm() {
+            uploadIndex = -1;
+            form[0].reset();
         }
 
         function uploadCallback(total, completed) {
@@ -73,8 +78,7 @@ window.FileUpload = {
                     uploadError
                 );
             } else {
-                uploadIndex = -1;
-                form[0].reset();
+                resetForm();
             }
         }
 
@@ -153,17 +157,26 @@ window.InlineMarkdownEdit = {
                 "quote",
                 "horizontal-rule",
                 {
+                    name: "cancel",
+                    className: "fa fa-times pull-right",
+                    title: "Close Editor",
+                    action: function (editor) {
+                        DotNet.invokeMethodAsync("Recollections.Blazor.Components", "InlineMarkdownEdit_OnCancel", textAreaId);
+                    }
+                },
+                {
                     name: "save",
-                    className: "fa fa-star hidden",
+                    className: "fa fa-check pull-right",
                     title: "Save",
                     action: function (editor) {
                         var value = editor.value();
                         DotNet.invokeMethodAsync("Recollections.Blazor.Components", "InlineMarkdownEdit_OnSave", textAreaId, value);
                     }
-                }
+                },
             ],
             shortcuts: {
-                "save": "Ctrl-Enter"
+                "save": "Ctrl-Enter",
+                "cancel": "Escape"
             }
         });
         InlineMarkdownEdit.editors[textAreaId] = editor;
@@ -190,6 +203,19 @@ window.InlineMarkdownEdit = {
     }
 }
 
+window.InlineTextEdit = {
+    Initialize: function (inputId) {
+        $('#' + inputId).focus().keyup(function (e) {
+            if (e.keyCode == 27) {
+                $(this).blur();
+                setTimeout(function () {
+                    DotNet.invokeMethodAsync("Recollections.Blazor.Components", "InlineTextEdit_OnCancel", inputId);
+                }, 1);
+            }
+        });
+    }
+};
+
 window.InlineDateEdit = {
     Initialize: function (inputId, format) {
         $('#' + inputId).datepicker({
@@ -205,7 +231,7 @@ window.InlineDateEdit = {
     GetValue: function (inputId) {
         return $('#' + inputId).val();
     }
-}
+};
 
 window.DatePicker = {
     Initialize: function (inputId, format) {
@@ -223,3 +249,13 @@ window.DatePicker = {
         return $('#' + inputId).val();
     }
 }
+
+window.Downloader = {
+    FromUrlAsync: function (name, url) {
+        var link = document.createElement("a");
+        link.target = "_blank";
+        link.download = name;
+        link.href = url;
+        link.click();
+    }
+};

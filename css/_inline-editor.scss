@@ -1,10 +1,22 @@
 ﻿.inline-editor {
-    .oi-check {
+    .oi-check, .fa-check {
         color: $ok-color;
     }
 
-    .oi-x {
+    .oi-x, .fa-times {
         color: $error-color;
+    }
+
+    .input-group-append {
+        button:hover {
+            .oi-check {
+                color: white;
+            }
+
+            .oi-x {
+                color: white;
+            }
+        }
     }
 
     .form-control {
@@ -13,6 +25,20 @@
 
     textarea {
         min-height: 400px;
+    }
+
+    input[type=text] {
+        border-right: none;
+    }
+
+    .input-group-append button {
+        border-color: #ced4da;
+        border-left-width: 0px;
+        border-right-width: 0px;
+    }
+
+    .input-group-append button:last-of-type {
+        border-right-width: 1px;
     }
 }
 
