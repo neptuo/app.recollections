@@ -16,6 +16,10 @@ blockquote {
     display: none;
 }
 
+a {
+    cursor: pointer;
+}
+
 @import "_loading.scss";
 @import "_inline-editor.scss";
 @import "_file-upload.scss";
@@ -24,10 +28,24 @@ blockquote {
     .right-actions {
         text-align: right;
     }
+
+    button {
+        margin-bottom: 4px;
+    }
+}
+
+@media (max-width:575px){
+    .actions {
+        button, form {
+            width: 100%;
+            display: block;
+        }
+    }
 }
 
 @import "_accounts.scss";
 @import "_timeline.scss";
+@import "_mappage.scss";
 @import "_entry-detail.scss";
 @import "_image-detail.scss"; 
 @import "_version.scss";

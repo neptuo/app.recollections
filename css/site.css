@@ -10,6 +10,9 @@
 .hidden, .inline-editor .hidden {
   display: none; }
 
+a {
+  cursor: pointer; }
+
 .loading-bar {
   display: inline-block;
   position: relative;
@@ -45,6 +48,9 @@
 
 .inline-editor .oi-x, .inline-editor .fa-times {
   color: var(--danger); }
+
+.inline-editor .editor-toolbar:after {
+  clear: both; }
 
 .inline-editor .input-group-append button:hover .oi-check {
   color: white; }
@@ -89,6 +95,21 @@ h2 .inline-editor-viewmode .oi {
 .inline-markdown .inline-submit {
   margin-top: -60px; }
 
+.map-container {
+  position: relative; }
+  .map-container .map {
+    height: 500px; }
+  .map-container .map-controls {
+    position: absolute;
+    top: 10px;
+    z-index: 1;
+    left: 10px; }
+  .map-container .card .card-header,
+  .map-container .card .card-footer {
+    display: none; }
+  .map-container .card .card-body {
+    padding: 4px; }
+
 .file-upload {
   float: left;
   margin-right: 4px; }
@@ -97,6 +118,14 @@ h2 .inline-editor-viewmode .oi {
 
 .actions .right-actions {
   text-align: right; }
+
+.actions button {
+  margin-bottom: 4px; }
+
+@media (max-width: 575px) {
+  .actions button, .actions form {
+    width: 100%;
+    display: block; } }
 
 .component-login form {
   width: 100%;
@@ -148,6 +177,17 @@ h2 .inline-editor-viewmode .oi {
   border-radius: 4px;
   border: 1px solid #e5e5e5; }
 
+.mappage {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  bottom: 0;
+  right: 0; }
+  .mappage .map-container {
+    height: 100%; }
+    .mappage .map-container .map {
+      height: 100%; }
+
 .entry-detail {
   padding: 24px;
   margin: 24px 0; }
@@ -166,6 +206,12 @@ h2 .inline-editor-viewmode .oi {
       .entry-detail .images .image img {
         max-width: 100%;
         max-height: 160px; }
+    .entry-detail .images .image-placeholder {
+      justify-content: center; }
+      .entry-detail .images .image-placeholder img {
+        opacity: 0.2; }
+      .entry-detail .images .image-placeholder span {
+        position: absolute; }
   .entry-detail .placeholder {
     color: #aaaaaa; }
 

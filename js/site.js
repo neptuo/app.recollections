@@ -1,21 +1,10 @@
 ﻿window.Bootstrap = {
     Modal: {
-        Register: function (id) {
-            var target = $("#" + id);
-            target.on('shown.bs.modal', function (e) {
-                $(e.currentTarget).find('[data-autofocus]').select().focus();
-            });
-            target.on('hidden.bs.modal', function (e) {
-                DotNet.invokeMethodAsync("Recollections.Blazor.Components", "Bootstrap_ModalHidden", e.currentTarget.id);
-            });
-
-            return true;
+        Show: function (container) {
+            $(container).modal('show');
         },
-        Toggle: function (id, isVisible) {
-            var target = $("#" + id);
-            target.modal(isVisible ? 'show' : 'hide');
-
-            return true;
+        Hide: function (container) {
+            $(container).modal('hide');
         }
     }
 };
@@ -43,31 +32,69 @@ window.Recollections = {
 };
 
 window.FileUpload = {
-    Initialize: function (formId, bearerToken) {
-        var form = $("#" + formId);
+    Initialize: function (interop, form, bearerToken) {
+        form = $(form);
+
+        if (form.data('fileUpload') != null)
+            return;
+
+        var fileUpload = {};
+        form.data('fileUpload', fileUpload);
+
         var input = form.find("input[type=file]");
 
         var uploadIndex = -1;
+        var progress = [];
+        var files = [];
+
         function uploadError(statusCode, message) {
-            var total = input[0].files.length;
-            resetForm();
-            DotNet.invokeMethodAsync("Recollections.Blazor.Components", "FileUpload_OnError", formId, statusCode, total, uploadIndex);
+            progress[uploadIndex].status = "error";
+            progress[uploadIndex].statusCode = statusCode;
+            progress[uploadIndex].responseText = message;
+            raiseProgress();
+            uploadStep(null);
+        }
+
+        function raiseProgress() {
+            interop.invokeMethodAsync("OnCompleted", progress);
         }
 
         function resetForm() {
             uploadIndex = -1;
+            progress = [];
+            files = [];
             form[0].reset();
         }
 
-        function uploadCallback(total, completed) {
-            DotNet.invokeMethodAsync("Recollections.Blazor.Components", "FileUpload_OnCompleted", formId, total, completed);
+        function uploadCallback(imagesCount, imagesCompleted, currentSize, currentUploaded, responseText) {
+            for (var i = 0; i < imagesCount; i++) {
+                if (progress[i].status != "done" && progress[i].status != "error") {
+                    if (imagesCompleted > i) {
+                        progress[i].status = "done";
+                        progress[i].statusCode = 200;
+                    }
+
+                    if (imagesCompleted == i) {
+                        progress[i].status = "current";
+                        progress[i].uploaded = currentUploaded;
+                    } else if (imagesCompleted - 1 == i) {
+                        if (responseText != null) {
+                            progress[i].responseText = responseText;
+                        }
+                    }
+                }
+            }
+
+            raiseProgress();
         }
 
-        function uploadStep() {
-            var files = input[0].files;
+        function uploadProgress(loaded, total) {
+            uploadCallback(input[0].files.length, uploadIndex, total, loaded, null);
+        }
 
+        function uploadStep(responseText) {
             uploadIndex++;
-            uploadCallback(files.length, uploadIndex);
+            uploadCallback(files.length, uploadIndex, 0, 0, responseText);
 
             if (files.length > uploadIndex) {
                 FileUpload.UploadFile(
@@ -75,7 +102,8 @@ window.FileUpload = {
                     form[0].action,
                     bearerToken,
                     uploadStep,
-                    uploadError
+                    uploadError,
+                    uploadProgress
                 );
             } else {
                 resetForm();
@@ -87,7 +115,21 @@ window.FileUpload = {
             e.preventDefault();
         });
         input.change(function () {
-            uploadStep();
+            for (var i = 0; i < input[0].files.length; i++) {
+                var file = input[0].files[i];
+                files.push(file);
+                progress.push({
+                    status: "pending",
+                    statusCode: 0,
+                    responseText: null,
+                    uploaded: 0,
+                    size: file.size
+                });
+            }
+
+            if (uploadIndex == -1) {
+                uploadStep();
+            }
         });
     },
     UploadFile: function (file, url, bearerToken, onCompleted, onError, onProgress) {
@@ -257,5 +299,151 @@ window.Downloader = {
         link.download = name;
         link.href = url;
         link.click();
+    }
+};
+
+window.Map = {
+    Initialize: function (container, interop, zoom, markers, isResizable) {
+        var isInitialization = false;
+        var model = null;
+
+        $container = $(container);
+        if ($container.data('map') == null) {
+            isInitialization = true;
+
+            var map = new SMap($container.find('.map')[0]);
+            map.addDefaultLayer(SMap.DEF_BASE).enable();
+            map.addDefaultControls();
+            map.setZoom(zoom);
+
+            var layer = new SMap.Layer.Marker();
+            map.addLayer(layer).enable();
+
+            if (isResizable) {
+                var sync = new SMap.Control.Sync();
+                map.addControl(sync);
+            }
+
+            model = {
+                map: map,
+                layer: layer,
+                interop: interop,
+                isAdditive: false,
+                isEmptyPoint: false,
+                isAdding: false
+            };
+            $container.data('map', model);
+
+            Map._BindEvents(model);
+        }
+
+        model = $container.data('map');
+        var points = Map._SetMarkers(model, markers);
+
+        model.isAdding = false;
+        model.isEmptyPoint = points.length == 0 && !model.isAdditive;
+        if (model.isEmptyPoint) {
+            model.map.setCursor("crosshair");
+            if (isInitialization) {
+                model.map.setZoom(1);
+            }
+        } else {
+            model.map.setCursor("move");
+            if (isInitialization) {
+                var centerZoom = model.map.computeCenterZoom(points);
+                if (centerZoom[1] > 13) {
+                    centerZoom[1] = 13;
+                }
+
+                model.map.setCenterZoom(centerZoom[0], centerZoom[1]);
+            }
+        }
+    },
+    _BindEvents: function (model) {
+        function dragStart(e) {
+            var node = e.target.getContainer();
+            node[SMap.LAYER_MARKER].style.cursor = "grab";
+        }
+
+        function dragStop(e) {
+            var node = e.target.getContainer();
+            node[SMap.LAYER_MARKER].style.cursor = "";
+            var coords = e.target.getCoords();
+
+            var id = Number.parseInt(e.target.getId());
+            moveMarkerOnCoords(id, coords);
+        }
+
+        function mapClick(e) {
+            if (model.isEmptyPoint || model.isAdding) {
+                var index = null;
+                if (model.isEmptyPoint) {
+                    index = 0;
+                }
+
+                var coords = SMap.Coords.fromEvent(e.data.event, model.map);
+                moveMarkerOnCoords(index, coords);
+            }
+        }
+
+        function markerClick(e) {
+            var id = Number.parseInt(e.target.getId());
+            model.interop.invokeMethodAsync("MarkerSelected", id);
+        }
+
+        function moveMarkerOnCoords(id, coords) {
+            var latitude = coords.y;
+            var longitude = coords.x;
+
+            coords.getAltitude().then(function (altitude) {
+                model.interop.invokeMethodAsync("MarkerMoved", id, latitude, longitude, altitude);
+            });
+        }
+
+        var signals = model.map.getSignals();
+        signals.addListener(window, "marker-drag-start", dragStart);
+        signals.addListener(window, "marker-drag-stop", dragStop);
+        signals.addListener(window, "map-click", mapClick);
+        signals.addListener(window, "marker-click", markerClick);
+
+        var $addButton = $container.find(".btn-add-location");
+
+        $addButton.click(function () {
+            model.isAdding = true;
+            model.map.setCursor("crosshair");
+        });
+
+        model.isAdditive = $addButton.length > 0;
+    },
+    _SetMarkers: function (model, markers) {
+        model.layer.removeAll();
+        var points = [];
+        for (var i = 0; i < markers.length; i++) {
+            if (markers[i].longitude == null && markers[i].latitude == null) {
+                continue;
+            }
+
+            var dropColor = markers[i].dropColor;
+            if (dropColor == null) {
+                dropColor = "red";
+            }
+
+            var options = {
+                title: markers[i].title,
+                url: SMap.CONFIG.img + "/marker/drop-" + dropColor + ".png"
+            };
+            var point = SMap.Coords.fromWGS84(markers[i].longitude, markers[i].latitude);
+            var marker = new SMap.Marker(point, "" + i, options);
+
+            if (markers[i].isEditable) {
+                marker.decorate(SMap.Marker.Feature.Draggable);
+            }
+
+            model.layer.addMarker(marker);
+
+            points.push(point);
+        }
+
+        return points;
     }
 };
