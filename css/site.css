@@ -116,6 +116,9 @@ h2 .inline-editor-viewmode .oi {
   .file-upload input[type=file] {
     display: none; }
 
+.main-navbar {
+  z-index: 2; }
+
 .actions .right-actions {
   text-align: right; }
 
@@ -126,6 +129,9 @@ h2 .inline-editor-viewmode .oi {
   .actions button, .actions form {
     width: 100%;
     display: block; } }
+
+.exception-panel {
+  margin-top: 24px; }
 
 .component-login form {
   width: 100%;
@@ -187,6 +193,9 @@ h2 .inline-editor-viewmode .oi {
     height: 100%; }
     .mappage .map-container .map {
       height: 100%; }
+  @media (max-width: 991px) {
+    .mappage {
+      top: 55px; } }
 
 .entry-detail {
   padding: 24px;
