@@ -121,6 +121,7 @@ window.FileUpload = {
                 progress.push({
                     status: "pending",
                     statusCode: 0,
+                    name: file.name,
                     responseText: null,
                     uploaded: 0,
                     size: file.size
@@ -145,7 +146,7 @@ window.FileUpload = {
                     var responseText = currentRequest.responseText;
                     onCompleted(responseText);
                 }
-                else if (onError != null) {
+                else if (request.status != 0 && onError != null) {
                     onError(currentRequest.status, currentRequest.statusText);
                 }
             }
