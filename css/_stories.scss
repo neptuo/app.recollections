@@ -1,0 +1,30 @@
+﻿.stories {
+    .story {
+        padding: 1rem;
+        border-bottom: 1px solid rgba(0,0,0,.1);
+
+        .dates, .entries, .chapters {
+            padding-right: .5rem;
+        }
+    }
+
+    .story-new {
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .story:last-child {
+        padding-bottom: 0;
+        border-bottom-width: 0;
+    }
+}
+
+.entry-detail {
+    .chapter {
+        margin-top: 1.5rem !important;
+    }
+
+    .entries {
+        margin-bottom: 1.5rem;
+    }
+}

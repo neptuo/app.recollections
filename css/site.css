@@ -95,6 +95,9 @@ a {
 h2 .inline-editor-viewmode .oi {
   top: 14px; }
 
+h4 .inline-editor-viewmode .oi {
+  top: 8px; }
+
 .inline-markdown .inline-submit {
   margin-top: -60px; }
 
@@ -242,6 +245,22 @@ h2 .inline-editor-viewmode .oi {
   .entry-detail .placeholder {
     color: #aaaaaa; }
 
+.entry-picker .entry {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  .entry-picker .entry .title {
+    display: block;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  .entry-picker .entry .date {
+    padding-right: .5rem; }
+
+.entry-picker .entry:last-child {
+  padding-bottom: 0;
+  border-bottom-width: 0; }
+
 .image-detail {
   padding: 24px;
   margin: 24px 0; }
@@ -258,6 +277,47 @@ h2 .inline-editor-viewmode .oi {
       margin: 0 auto; }
   .image-detail .placeholder {
     color: #aaaaaa; }
+
+.stories .story {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  .stories .story .dates, .stories .story .entries, .stories .story .chapters {
+    padding-right: .5rem; }
+
+.stories .story-new {
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+
+.stories .story:last-child {
+  padding-bottom: 0;
+  border-bottom-width: 0; }
+
+.entry-detail .chapter {
+  margin-top: 1.5rem !important; }
+
+.entry-detail .entries {
+  margin-bottom: 1.5rem; }
+
+.story-picker .story {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  .story-picker .story .title {
+    display: block;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  .story-picker .story .chapters {
+    padding-right: .5rem; }
+    .story-picker .story .chapters ul {
+      padding-left: 20px; }
+
+.story-picker .story:first-child {
+  padding-top: 0; }
+
+.story-picker .story:last-child {
+  padding-bottom: 0;
+  border-bottom-width: 0; }
 
 .version {
   color: #aaaaaa; }
