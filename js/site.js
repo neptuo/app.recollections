@@ -1,11 +1,37 @@
 ﻿window.Bootstrap = {
     Modal: {
         Show: function (container) {
-            $(container).modal('show');
+            $(container).modal({
+                "show": true,
+                "focus": true
+            }).on('shown.bs.modal', function () {
+                $(container).find("input").first().trigger('focus');
+            })
         },
         Hide: function (container) {
             $(container).modal('hide');
         }
+    },
+    Tooltip: {
+        Init: function (container) {
+            $(container).tooltip();
+        }
+    },
+    Popover: {
+        Show: function(container, title, body) {
+            $(container).popover({
+                content: body,
+                title: title,
+                placement: "bottom",
+                show: true
+            });
+        }
+    }
+};
+
+window.ElementReference = {
+    Focus: function (element) {
+        element.focus();
     }
 };
 
@@ -56,7 +82,7 @@ window.FileUpload = {
         }
 
         function raiseProgress() {
-            interop.invokeMethodAsync("OnCompleted", progress);
+            interop.invokeMethodAsync("FileUpload.OnCompleted", progress);
         }
 
         function resetForm() {
@@ -175,14 +201,14 @@ window.FileUpload = {
 };
 
 window.InlineMarkdownEdit = {
-    editors: {},
-    Initialize: function (textAreaId) {
-        if (InlineMarkdownEdit.editors[textAreaId] != null) {
+    Initialize: function (interop, textArea, value) {
+        $textArea = $(textArea);
+        if ($textArea.data("easymde") != null) {
             return;
         }
 
         var editor = new EasyMDE({
-            element: document.getElementById(textAreaId),
+            element: textArea,
             autofocus: true,
             forceSync: true,
             spellChecker: false,
@@ -204,7 +230,7 @@ window.InlineMarkdownEdit = {
                     className: "fa fa-times pull-right",
                     title: "Close Editor",
                     action: function (editor) {
-                        DotNet.invokeMethodAsync("Recollections.Blazor.Components", "InlineMarkdownEdit_OnCancel", textAreaId);
+                        interop.invokeMethodAsync("Markdown.OnCancel");
                     }
                 },
                 {
@@ -213,46 +239,53 @@ window.InlineMarkdownEdit = {
                     title: "Save",
                     action: function (editor) {
                         var value = editor.value();
-                        DotNet.invokeMethodAsync("Recollections.Blazor.Components", "InlineMarkdownEdit_OnSave", textAreaId, value);
+                        interop.invokeMethodAsync("Markdown.OnSave", value);
                     }
-                },
+                }
             ],
             shortcuts: {
                 "save": "Ctrl-Enter",
                 "cancel": "Escape"
             }
         });
-        InlineMarkdownEdit.editors[textAreaId] = editor;
-    },
-    Destroy: function (textAreaId) {
-        if (InlineMarkdownEdit.editors[textAreaId] != null) {
-            InlineMarkdownEdit.editors[textAreaId].toTextArea();
-            InlineMarkdownEdit.editors[textAreaId] = null;
-        }
-    },
-    SetValue: function (textAreaId, value) {
-        if (InlineMarkdownEdit.editors[textAreaId] != null) {
-            if (value == null) {
-                value = "";
-            }
 
-            return InlineMarkdownEdit.editors[textAreaId].value(value);
+        $textArea.data("easymde", editor);
+
+        if (value !== null) {
+            InlineMarkdownEdit.SetValue(textArea, value);
         }
     },
-    GetValue: function (textAreaId) {
-        if (InlineMarkdownEdit.editors[textAreaId] != null) {
-            return InlineMarkdownEdit.editors[textAreaId].value();
+    Destroy: function (textArea) {
+        var editor = $(textArea).data("easymde");
+        if (editor != null) {
+            editor.toTextArea();
+        }
+    },
+    SetValue: function (textArea, value) {
+        if (value === null) {
+            value = "";
+        }
+
+        var editor = $(textArea).data("easymde");
+        if (editor != null) {
+            editor.value(value);
+        }
+    },
+    GetValue: function (textArea) {
+        var editor = $(textArea).data("easymde");
+        if (editor != null) {
+            return editor.value();
         }
     }
-}
+};
 
 window.InlineTextEdit = {
-    Initialize: function (inputId) {
-        $('#' + inputId).focus().keyup(function (e) {
+    Initialize: function (interop, input) {
+        $(input).focus().keyup(function (e) {
             if (e.keyCode == 27) {
                 $(this).blur();
                 setTimeout(function () {
-                    DotNet.invokeMethodAsync("Recollections.Blazor.Components", "InlineTextEdit_OnCancel", inputId);
+                    interop.invokeMethodAsync("TextEdit.OnCancel");
                 }, 1);
             }
         });
@@ -260,36 +293,38 @@ window.InlineTextEdit = {
 };
 
 window.InlineDateEdit = {
-    Initialize: function (inputId, format) {
-        $('#' + inputId).datepicker({
+    Initialize: function (input, format) {
+        $(input).focus().datepicker({
             format: format.toLowerCase(),
             autoclose: true,
             todayHighlight: true,
             todayBtn: "linked"
         });
     },
-    Destroy: function (inputId) {
-        $('#' + inputId).datepicker("destroy");
+    Destroy: function (input) {
+        $(input).datepicker("destroy");
     },
-    GetValue: function (inputId) {
-        return $('#' + inputId).val();
+    GetValue: function (input) {
+        return $(input).val();
     }
 };
 
 window.DatePicker = {
-    Initialize: function (inputId, format) {
-        $('#' + inputId).datepicker({
+    Initialize: function (input, format) {
+        $(input).datepicker({
             format: format.toLowerCase(),
             autoclose: true,
             todayHighlight: true,
             todayBtn: "linked"
         });
     },
-    Destroy: function (inputId) {
-        $('#' + inputId).datepicker("destroy");
+    Destroy: function (input) {
+        if (input != null) {
+            $(input).datepicker("destroy");
+        }
     },
-    GetValue: function (inputId) {
-        return $('#' + inputId).val();
+    GetValue: function (input) {
+        return $(input).val();
     }
 }
 
@@ -305,13 +340,10 @@ window.Downloader = {
 
 window.Map = {
     Initialize: function (container, interop, markers, isZoomed, isResizable) {
-        var isInitialization = false;
         var model = null;
 
         $container = $(container);
         if ($container.data('map') == null) {
-            isInitialization = true;
-
             var map = new SMap($container.find('.map')[0]);
             map.addDefaultLayer(SMap.DEF_BASE).enable();
             map.addDefaultControls();
@@ -351,13 +383,17 @@ window.Map = {
             model.map.setCursor("move");
             if (!isZoomed) {
                 var centerZoom = model.map.computeCenterZoom(points);
-                if (centerZoom[1] > 13) {
-                    centerZoom[1] = 13;
-                }
-
+                centerZoom[1] = Map._EnsureMaxCenterZoom(centerZoom[1]);
                 model.map.setCenterZoom(centerZoom[0], centerZoom[1]);
             }
         }
+    },
+    _EnsureMaxCenterZoom(zoom) {
+        if (zoom > 13) {
+            zoom = 13;
+        }
+
+        return zoom;
     },
     _BindEvents: function (model) {
         function dragStart(e) {
@@ -388,7 +424,7 @@ window.Map = {
 
         function markerClick(e) {
             var id = Number.parseInt(e.target.getId());
-            model.interop.invokeMethodAsync("MarkerSelected", id);
+            model.interop.invokeMethodAsync("Map.MarkerSelected", id);
         }
 
         function moveMarkerOnCoords(id, coords) {
@@ -396,7 +432,7 @@ window.Map = {
             var longitude = coords.x;
 
             coords.getAltitude().then(function (altitude) {
-                model.interop.invokeMethodAsync("MarkerMoved", id, latitude, longitude, altitude);
+                model.interop.invokeMethodAsync("Map.MarkerMoved", id, latitude, longitude, altitude);
             });
         }
 
@@ -445,5 +481,26 @@ window.Map = {
         }
 
         return points;
+    },
+    Search: function (container, query) {
+        model = $(container).data('map');
+        new SMap.Geocoder(query, function (geocoder) {
+            var data = [];
+            var results = geocoder.getResults()[0].results;
+            for (var i = 0; i < results.length; i++) {
+                var result = results[i];
+                data.push({
+                    label: result.label,
+                    longitude: result.coords.x,
+                    latitude: result.coords.y
+                });
+            }
+
+            model.interop.invokeMethodAsync("Map.SearchCompleted", data);
+        });
+    },
+    CenterAt: function (container, latitude, longitude) {
+        model = $(container).data('map');
+        model.map.setCenterZoom(SMap.Coords.fromWGS84(longitude, latitude), 15);
     }
 };
