@@ -1,129 +1,48 @@
-const baseURL = '/';
-const indexURL = '/index.html';
-const networkFetchEvent = 'fetch';
-const swInstallEvent = 'install';
-const swInstalledEvent = 'installed';
-const swActivateEvent = 'activate';
-const staticCachePrefix = 'blazor-cache-v';
-const staticCacheName = 'blazor-cache-v0.7.0';
-const requiredFiles = [
-"/_framework/blazor.boot.json",
-"/_framework/blazor.webassembly.js",
-"/_framework/wasm/mono.js",
-"/_framework/wasm/mono.wasm",
-"/_framework/_bin/CommonMark.dll",
-"/_framework/_bin/Microsoft.AspNetCore.Authorization.dll",
-"/_framework/_bin/Microsoft.AspNetCore.Blazor.dll",
-"/_framework/_bin/Microsoft.AspNetCore.Blazor.HttpClient.dll",
-"/_framework/_bin/Microsoft.AspNetCore.Components.dll",
-"/_framework/_bin/Microsoft.AspNetCore.Components.Forms.dll",
-"/_framework/_bin/Microsoft.AspNetCore.Components.Web.dll",
-"/_framework/_bin/Microsoft.AspNetCore.Metadata.dll",
-"/_framework/_bin/Microsoft.Bcl.AsyncInterfaces.dll",
-"/_framework/_bin/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
-"/_framework/_bin/Microsoft.Extensions.DependencyInjection.dll",
-"/_framework/_bin/Microsoft.Extensions.Logging.Abstractions.dll",
-"/_framework/_bin/Microsoft.Extensions.Options.dll",
-"/_framework/_bin/Microsoft.Extensions.Primitives.dll",
-"/_framework/_bin/Microsoft.JSInterop.dll",
-"/_framework/_bin/Mono.WebAssembly.Interop.dll",
-"/_framework/_bin/mscorlib.dll",
-"/_framework/_bin/Neptuo.dll",
-"/_framework/_bin/Neptuo.Events.dll",
-"/_framework/_bin/Neptuo.Exceptions.dll",
-"/_framework/_bin/Recollections.Api.Shared.dll",
-"/_framework/_bin/Recollections.Blazor.Components.dll",
-"/_framework/_bin/Recollections.Blazor.UI.dll",
-"/_framework/_bin/System.ComponentModel.DataAnnotations.dll",
-"/_framework/_bin/System.Core.dll",
-"/_framework/_bin/System.dll",
-"/_framework/_bin/System.Net.Http.dll",
-"/_framework/_bin/System.Runtime.CompilerServices.Unsafe.dll",
-"/_framework/_bin/System.Text.Encodings.Web.dll",
-"/_framework/_bin/System.Text.Json.dll",
-"/_framework/_bin/WebAssembly.Bindings.dll",
-"/_framework/_bin/WebAssembly.Net.Http.dll",
-"/css/bootstrap-datepicker/bootstrap-datepicker.min.css",
-"/css/bootstrap/bootstrap.min.css",
-"/css/bootstrap/bootstrap.min.css.map",
-"/css/easymde/easymde.min.css",
-"/css/open-iconic/css/open-iconic-bootstrap.css",
-"/css/open-iconic/css/open-iconic-bootstrap.min.css",
-"/css/open-iconic/fonts/open-iconic.eot",
-"/css/open-iconic/fonts/open-iconic.otf",
-"/css/open-iconic/fonts/open-iconic.svg",
-"/css/open-iconic/fonts/open-iconic.ttf",
-"/css/open-iconic/fonts/open-iconic.woff",
-"/css/simplemde/simplemde.min.css",
-"/css/site.css",
-"/css/site.min.css",
-"/img/icon-192x192.png",
-"/img/icon-512x512.png",
-"/img/logo.png",
-"/img/thumbnail-placeholder.png",
-"/index.html",
-"/js/bootstrap-datepicker/bootstrap-datepicker.en-GB.min.js",
-"/js/bootstrap-datepicker/bootstrap-datepicker.min.js",
-"/js/bootstrap/bootstrap.min.js",
-"/js/easymde/easymde.min.js",
-"/js/jquery/jquery.min.js",
-"/js/popper/popper.min.js",
-"/js/simplemde/simplemde.min.js",
-"/js/site.js",
-"/service-worker-update.js",
-"/service-worker-register.js",
-"/manifest.json"
-];
-// * listen for the install event and pre-cache anything in filesToCache * //
-self.addEventListener(swInstallEvent, event => {
-    self.skipWaiting();
-    event.waitUntil(
-        caches.open(staticCacheName)
-            .then(cache => {
-                return cache.addAll(requiredFiles);
-            })
-    );
-});
-self.addEventListener(swActivateEvent, function (event) {
-    event.waitUntil(
-        caches.keys().then(function (cacheNames) {
-            return Promise.all(
-                cacheNames.map(function (cacheName) {
-                    if (staticCacheName !== cacheName && cacheName.startsWith(staticCachePrefix)) {
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
-        })
-    );
-});
-self.addEventListener(networkFetchEvent, event => {
-    const requestUrl = new URL(event.request.url);
-    if (requestUrl.origin === location.origin) {
-        if (requestUrl.pathname === baseURL) {
-            event.respondWith(caches.match(indexURL));
-            return;
-        }
+﻿// Caution! Be sure you understand the caveats before publishing an application with
+// offline support. See https://aka.ms/blazor-offline-considerations
+
+self.importScripts('./service-worker-assets.js');
+self.addEventListener('install', event => event.waitUntil(onInstall(event)));
+self.addEventListener('activate', event => event.waitUntil(onActivate(event)));
+self.addEventListener('fetch', event => event.respondWith(onFetch(event)));
+
+const cacheNamePrefix = 'offline-cache-';
+const cacheName = `${cacheNamePrefix}${self.assetsManifest.version}`;
+const offlineAssetsInclude = [/\.dll$/, /\.pdb$/, /\.wasm/, /\.html/, /\.js$/, /\.json$/, /\.css$/, /\.woff$/, /\.png$/, /\.jpe?g$/, /\.gif$/, /\.ico$/];
+const offlineAssetsExclude = [/^service-worker\.js$/];
+
+async function onInstall(event) {
+    console.info('Service worker: Install');
+
+    // Fetch and cache all matching items from the assets manifest
+    const assetsRequests = self.assetsManifest.assets
+        .filter(asset => offlineAssetsInclude.some(pattern => pattern.test(asset.url)))
+        .filter(asset => !offlineAssetsExclude.some(pattern => pattern.test(asset.url)))
+        .map(asset => new Request(asset.url, { integrity: asset.hash }));
+    await caches.open(cacheName).then(cache => cache.addAll(assetsRequests));
+}
+
+async function onActivate(event) {
+    console.info('Service worker: Activate');
+
+    // Delete unused caches
+    const cacheKeys = await caches.keys();
+    await Promise.all(cacheKeys
+        .filter(key => key.startsWith(cacheNamePrefix) && key !== cacheName)
+        .map(key => caches.delete(key)));
+}
+
+async function onFetch(event) {
+    let cachedResponse = null;
+    if (event.request.method === 'GET') {
+        // For all navigation requests, try to serve index.html from cache
+        // If you need some URLs to be server-rendered, edit the following check to exclude those URLs
+        const shouldServeIndexHtml = event.request.mode === 'navigate';
+
+        const request = shouldServeIndexHtml ? 'index.html' : event.request;
+        const cache = await caches.open(cacheName);
+        cachedResponse = await cache.match(request);
     }
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                if (response) {
-                    return response;
-                }
-                return fetch(event.request)
-                    .then(response => {
-                        if (response.ok) {
-                            if (requestUrl.origin === location.origin) {
-                                caches.open(staticCacheName).then(cache => {
-                                    cache.put(event.request.url, response);
-                                });
-                            }
-                        }
-                        return response.clone();
-                    });
-            }).catch(error => {
-                console.error(error);
-            })
-    );
-});
+
+    return cachedResponse || fetch(event.request);
+}
