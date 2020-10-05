@@ -6,7 +6,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "CommonMark.dll": "sha256-Yw9knaGYCjg3U\/sxpRXFzh3BK6d6oxWAVjwqzEOWd2w=",
+      "CommonMark.dll": "sha256-7m321jDJYbbbTYU\/SNWL5frz9Yx7fHnbe+EdL7+yFIo=",
       "Microsoft.AspNetCore.Components.dll": "sha256-+N\/hVl0ZeA2ljnv3g6KjhGiOnPGVzUvXFtZdcolD8zk=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-J\/kdg271psRpaOR8+agVF1yFodUOBqqE8gehKBY7q5M=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-QSGX1UYrzMxWJ6ZaC\/U1km9D3pgdIWPJDmMQg51b38A=",
@@ -27,7 +27,7 @@
       "Recollections.Api.Shared.dll": "sha256-3wyLoHXywIFSTcLA7TnCAdLp0\/IWo3bdN\/t1Naiwo7c=",
       "Recollections.Blazor.Components.dll": "sha256-aPaiUrRFEd8qCGmg5QVTUO8yMSUy8B3seFpXibnRHr8=",
       "Recollections.Entries.Models.dll": "sha256-B7umPfPMbrcylzKe6BRXncaxa7YhCqZnw16RXis\/0AQ=",
-      "Recollections.Blazor.UI.dll": "sha256-tr2WY\/xz4\/XcS8SX7tWWkcLZGhNWiCNxVD0v61v5Em0=",
+      "Recollections.Blazor.UI.dll": "sha256-HDpNCFUxzHqSKxsWN6emtWylCsOoOE8x1c2RxaSXz1M=",
       "System.Collections.Concurrent.dll": "sha256-CCoZU1xpUdPkNGUmpfsByHOYcGsr5PjUoEcCPguF8rA=",
       "System.Collections.Immutable.dll": "sha256-SH4i\/qB\/bUU8\/EPOxAQdsRXmInDc0+MyMw1MSkZ+FGE=",
       "System.Collections.NonGeneric.dll": "sha256-Bhia9wbpSEXi0q5nJAb8MI6E6l+UfKv7cwPeUP7fwHY=",
