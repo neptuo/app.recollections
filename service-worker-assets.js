@@ -1,63 +1,15 @@
 ﻿self.assetsManifest = {
   "assets": [
     {
-      "hash": "sha256-siyOpF\/pBWUPgIcQi17TLBkjvNgNQArcmwJB8YvkAgg=",
-      "url": "css\/bootstrap-datepicker\/bootstrap-datepicker.min.css"
-    },
-    {
-      "hash": "sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=",
-      "url": "css\/bootstrap\/bootstrap.min.css"
-    },
-    {
-      "hash": "sha256-i6u2WHVsNQAog4sUjoHo2ZWIMY9KVRasOoqqzEeea5c=",
-      "url": "css\/bootstrap\/bootstrap.min.css.map"
-    },
-    {
-      "hash": "sha256-EueKxEbnWBMRkI0O0JCeRtX382XFQk+O9KdmqQ9WQhU=",
-      "url": "css\/easymde\/easymde.min.css"
-    },
-    {
-      "hash": "sha256-hz6OTf1LMUHl4xze8+4QsvUrEaRq4u\/l\/86584l\/5PU=",
-      "url": "css\/open-iconic\/css\/open-iconic-bootstrap.css"
-    },
-    {
-      "hash": "sha256-u9FPnkYAKa6RlOoykruWV90I5TeYxZHN0mMnCgxXXsQ=",
-      "url": "css\/open-iconic\/css\/open-iconic-bootstrap.min.css"
-    },
-    {
-      "hash": "sha256-CQKobFVVoAzbeQvYdqTR8fS1EG1FCeM+he\/kPXq4NCk=",
-      "url": "css\/open-iconic\/css\/open-iconic-bootstrap.scss"
-    },
-    {
-      "hash": "sha256-OK3poGPgzKI2NzNgP07XMbJa3Dz6USoUh\/chSkSvQpc=",
-      "url": "css\/open-iconic\/fonts\/open-iconic.eot"
-    },
-    {
-      "hash": "sha256-sDUtuZAEzWZyv\/U1xl\/9D3ehyU69JE+FvAcu5HQ+\/a0=",
-      "url": "css\/open-iconic\/fonts\/open-iconic.otf"
-    },
-    {
-      "hash": "sha256-p+RP8CV3vRK1YbIkNzq3rPo1jyETPnR07ULb+HVYL8w=",
-      "url": "css\/open-iconic\/fonts\/open-iconic.ttf"
-    },
-    {
-      "hash": "sha256-cZPqVlRJfSNW0KaQ4+UPOXZ\/v\/QzXlejRDwUNdZIofI=",
-      "url": "css\/open-iconic\/fonts\/open-iconic.woff"
-    },
-    {
-      "hash": "sha256-Is0XNfNX8KF\/70J2nv8Qe6BWyiXrtFxKfJBHoDgNAEM=",
-      "url": "css\/simplemde\/simplemde.min.css"
-    },
-    {
-      "hash": "sha256-7moKtc3DilZxmEYXz9tBDgDFYAFbfwnITn+XP82yjdM=",
+      "hash": "sha256-IpP4NppCsszyfU7md35JF2277mzx+RGAfF1JdQo+zQs=",
       "url": "css\/site.css"
     },
     {
-      "hash": "sha256-QHTMCZgPtNhfbCyRIlwh8aNPbiPeyd4kY8hhDBLLGNo=",
+      "hash": "sha256-ysaDgZSAIHPJuWOSD8OkgpYprOVI6wgwD5mXzubFOhc=",
       "url": "css\/site.min.css"
     },
     {
-      "hash": "sha256-h7CquqSWBWsvequpJyfD0O96V2t87wgbyQeiUUfcme8=",
+      "hash": "sha256-dwfoKjK0\/agszah76JRjvmf7I9KuQJuPPwlRJ5fVC6Q=",
       "url": "css\/site.scss"
     },
     {
@@ -65,7 +17,7 @@
       "url": "css\/_accounts.scss"
     },
     {
-      "hash": "sha256-oa5WW1vYkkRnrCRrvkVmelZoby0CzXF4KY5QxRUiYZ8=",
+      "hash": "sha256-j4eRtw3wmxcGCt\/YBGn7HRrUCsVzHXiS7Dt2Kj7yfcQ=",
       "url": "css\/_colors.scss"
     },
     {
@@ -89,7 +41,7 @@
       "url": "css\/_image-detail.scss"
     },
     {
-      "hash": "sha256-B8oUqlAa63W5+5tB3BOIO7\/vIvnEZPefPqZNHAPBsac=",
+      "hash": "sha256-VczO27YLwZtxNVuXVssqzjkjaJUQOMMVK7CebjkOqCs=",
       "url": "css\/_inline-editor.scss"
     },
     {
@@ -109,7 +61,7 @@
       "url": "css\/_story-picker.scss"
     },
     {
-      "hash": "sha256-n8huOP144X8LwikgSNc8MMgmXds6fK1sJxTbHy2XFEI=",
+      "hash": "sha256-59D\/H2aI4sqRuyoMxH2czXgI1Fg67ErGzJLt3HfX5+o=",
       "url": "css\/_timeline.scss"
     },
     {
@@ -133,47 +85,347 @@
       "url": "img\/thumbnail-placeholder.png"
     },
     {
-      "hash": "sha256-64iwYXgozhmWDtuoA6Ef7JlxYr+xxX5oMHxyohx\/J5g=",
+      "hash": "sha256-MwZOEuwD4cLU+kbT0g2nsBth4dJWbtvh0b6KyUbi0Gg=",
       "url": "index.html"
     },
     {
-      "hash": "sha256-zWVLv9rjdSAUVWhtqJUdGV1O5ONXpXMEJsOkp7B2gZ4=",
-      "url": "js\/bootstrap-datepicker\/bootstrap-datepicker.en-GB.min.js"
+      "hash": "sha256-MxWov26n3pH7aJVxBhcY15qalTEkgfGXX0ANa3vhr3U=",
+      "url": "js\/site.js"
+    },
+    {
+      "hash": "sha256-bLNUHzSMEvxBhoysBE7EXYlIrmo7+n7F4oJra1IgOaM=",
+      "url": "lib\/bootstrap-datepicker\/dist\/css\/bootstrap-datepicker.css"
+    },
+    {
+      "hash": "sha256-O1LI+e9ZOcVE4ZFmgydH+ETHCAXEm+JGfiyQKmgPO0Q=",
+      "url": "lib\/bootstrap-datepicker\/dist\/css\/bootstrap-datepicker.css.map"
+    },
+    {
+      "hash": "sha256-siyOpF\/pBWUPgIcQi17TLBkjvNgNQArcmwJB8YvkAgg=",
+      "url": "lib\/bootstrap-datepicker\/dist\/css\/bootstrap-datepicker.min.css"
+    },
+    {
+      "hash": "sha256-9eB9aJkdMOPCUi0CBHbl6FWi\/lIkXb+1oKi9bWFZ3HQ=",
+      "url": "lib\/bootstrap-datepicker\/dist\/css\/bootstrap-datepicker.standalone.css"
+    },
+    {
+      "hash": "sha256-9Ov3L0M4wyKavVT7iCGNtT3wulNZYFFisnCYHBpkhA8=",
+      "url": "lib\/bootstrap-datepicker\/dist\/css\/bootstrap-datepicker.standalone.css.map"
+    },
+    {
+      "hash": "sha256-jO7D3fIsAq+jB8Xt3NI5vBf3k4tvtHwzp8ISLQG4UWU=",
+      "url": "lib\/bootstrap-datepicker\/dist\/css\/bootstrap-datepicker.standalone.min.css"
+    },
+    {
+      "hash": "sha256-AghQEDQh6JXTN1iI\/BatwbIHpJRKQcg2lay7DE5U\/RQ=",
+      "url": "lib\/bootstrap-datepicker\/dist\/css\/bootstrap-datepicker3.css"
+    },
+    {
+      "hash": "sha256-N9yjT+kJOweKsnW\/vUAUaFA9RrFbkvvLKvk2EiiqgFw=",
+      "url": "lib\/bootstrap-datepicker\/dist\/css\/bootstrap-datepicker3.css.map"
+    },
+    {
+      "hash": "sha256-FAOaXTpl90\/K8cXmSdsskbQN3nKYulhCpPbcFzGTWKI=",
+      "url": "lib\/bootstrap-datepicker\/dist\/css\/bootstrap-datepicker3.min.css"
+    },
+    {
+      "hash": "sha256-a3Tf3yz6sgXlfpMWo4K3hLkVop5naZZPVUgB\/YVrTwk=",
+      "url": "lib\/bootstrap-datepicker\/dist\/css\/bootstrap-datepicker3.standalone.css"
+    },
+    {
+      "hash": "sha256-W5FNFjoz9V6Hkdf32oYUQP28tTd9vWukjx\/UBPi38PI=",
+      "url": "lib\/bootstrap-datepicker\/dist\/css\/bootstrap-datepicker3.standalone.css.map"
+    },
+    {
+      "hash": "sha256-BqW0zYSKgIYEpELUf5irBCGGR7wQd5VZ\/N6OaBEsz5U=",
+      "url": "lib\/bootstrap-datepicker\/dist\/css\/bootstrap-datepicker3.standalone.min.css"
+    },
+    {
+      "hash": "sha256-JIBDRWRB0n67sjMusTy4xZ9L09V8BINF0nd\/UUUOi48=",
+      "url": "lib\/bootstrap-datepicker\/dist\/js\/bootstrap-datepicker.js"
     },
     {
       "hash": "sha256-bqVeqGdJ7h\/lYPq6xrPv\/YGzMEb6dNxlfiTUHSgRCp8=",
-      "url": "js\/bootstrap-datepicker\/bootstrap-datepicker.min.js"
+      "url": "lib\/bootstrap-datepicker\/dist\/js\/bootstrap-datepicker.min.js"
     },
     {
-      "hash": "sha256-CjSoeELFOcH0\/uxWu6mC\/Vlrc1AARqbm\/jiiImDGV3s=",
-      "url": "js\/bootstrap\/bootstrap.min.js"
+      "hash": "sha256-zWVLv9rjdSAUVWhtqJUdGV1O5ONXpXMEJsOkp7B2gZ4=",
+      "url": "lib\/bootstrap-datepicker\/dist\/locales\/bootstrap-datepicker.en-GB.min.js"
     },
     {
-      "hash": "sha256-+Uvwv5bcu8HmSDr0GSKn+EC2S52BkcdPsH5OlHFi\/Uc=",
-      "url": "js\/easymde\/easymde.min.js"
+      "hash": "sha256-fGbCMN115WRXRO5Owed1UCaHm9r1V0++XTkL37vx6ts=",
+      "url": "lib\/bootstrap\/dist\/css\/bootstrap-grid.css"
     },
     {
-      "hash": "sha256-tAnBShC0yq1rVIRKpjpfr3SLg+7MLdDU+x2RP43lU2U=",
-      "url": "js\/jquery\/jquery.min.js"
+      "hash": "sha256-4O657wucgOn3vg8c2YJP\/b8chwe\/eUs0MWB8mk721VI=",
+      "url": "lib\/bootstrap\/dist\/css\/bootstrap-grid.css.map"
     },
     {
-      "hash": "sha256-pS96pU17yq+gVu4KBQJi38VpSuKN7otMrDQprzf\/DWY=",
-      "url": "js\/popper\/popper.min.js"
+      "hash": "sha256-aCZ92RVTugmQZZ6Eb38aWBZ7yF4KuPWBxuJqSuxfHBs=",
+      "url": "lib\/bootstrap\/dist\/css\/bootstrap-grid.min.css"
     },
     {
-      "hash": "sha256-6sZs7OGP0Uzcl7UDsLaNsy1K0KTZx1+6yEVrRJMn2IM=",
-      "url": "js\/simplemde\/simplemde.min.js"
+      "hash": "sha256-X+SGwiC9yUA1Romx9ot1ttv3CbYBrRALbsihkoxGLWE=",
+      "url": "lib\/bootstrap\/dist\/css\/bootstrap-grid.min.css.map"
     },
     {
-      "hash": "sha256-fsoTia2z5zFPjqkIBrO5awM8fdR1r7H5UUsCsjT8oY0=",
-      "url": "js\/site.js"
+      "hash": "sha256-+vIDhgM+dGtmIsvP4bxjd0jYNt6LqHiQFhFewpYVT9k=",
+      "url": "lib\/bootstrap\/dist\/css\/bootstrap-reboot.css"
+    },
+    {
+      "hash": "sha256-3LV\/+4\/OCOkR64ZNmXQ1468lD1XAUxrGe8nNvNLD32s=",
+      "url": "lib\/bootstrap\/dist\/css\/bootstrap-reboot.css.map"
+    },
+    {
+      "hash": "sha256-aGPgbKHZejHCrIc716zbOGsNg1odzfASgFR3eboXcDc=",
+      "url": "lib\/bootstrap\/dist\/css\/bootstrap-reboot.min.css"
+    },
+    {
+      "hash": "sha256-z40SG9pTIy8t50HcAaSAvtFCR8Qx7ik15W0x+usalvI=",
+      "url": "lib\/bootstrap\/dist\/css\/bootstrap-reboot.min.css.map"
+    },
+    {
+      "hash": "sha256-ljua8QjKBib0nvcIYNA3u2+r\/MfwSQLFaNO8bSPXeok=",
+      "url": "lib\/bootstrap\/dist\/css\/bootstrap-utilities.css"
+    },
+    {
+      "hash": "sha256-BkKu6rxFFLVso\/vDR00TSyfPhqnZ3D622stsIWhQLO0=",
+      "url": "lib\/bootstrap\/dist\/css\/bootstrap-utilities.css.map"
+    },
+    {
+      "hash": "sha256-YpJytZuE4As1LrQuROin1UE9g2IRvv46GCvqqRuRKdQ=",
+      "url": "lib\/bootstrap\/dist\/css\/bootstrap-utilities.min.css"
+    },
+    {
+      "hash": "sha256-nwMqfZL0OLLU3hPU9VbcbZCUm5jiJBoJjojj4+VQGLk=",
+      "url": "lib\/bootstrap\/dist\/css\/bootstrap-utilities.min.css.map"
+    },
+    {
+      "hash": "sha256-Ni4WTsgH7LIswncnkD4z60a\/vWiz9cnzQO+PoZzJ4Jc=",
+      "url": "lib\/bootstrap\/dist\/css\/bootstrap.css"
+    },
+    {
+      "hash": "sha256-kPbULdYZlQpW50MbJvqFq+rPpdaCAe46Umwh0xXpgAE=",
+      "url": "lib\/bootstrap\/dist\/css\/bootstrap.css.map"
+    },
+    {
+      "hash": "sha256-QNJEDXeyR+LoelSxVRdc4483zIA31d6ROKurUAR66b8=",
+      "url": "lib\/bootstrap\/dist\/css\/bootstrap.min.css"
+    },
+    {
+      "hash": "sha256-x5ys78OTQ9Qa7Napxs+K0XewSWiKnyedF29CCACJnn4=",
+      "url": "lib\/bootstrap\/dist\/css\/bootstrap.min.css.map"
+    },
+    {
+      "hash": "sha256-ZTqgwfFE5iAKfDLHVQbcJEyD\/IuHwzZAxj00wfqvgSo=",
+      "url": "lib\/bootstrap\/dist\/js\/bootstrap.bundle.js"
+    },
+    {
+      "hash": "sha256-EaseOroNDgMCilQAgrcUCWyxBDH6dlmzuGsSBnZC8Dw=",
+      "url": "lib\/bootstrap\/dist\/js\/bootstrap.bundle.js.map"
+    },
+    {
+      "hash": "sha256-ue5KN17Lw\/SFUEP8EIx1dSURJ0qfthaTON7xMrU2vrs=",
+      "url": "lib\/bootstrap\/dist\/js\/bootstrap.bundle.min.js"
+    },
+    {
+      "hash": "sha256-X6u3Lt9Kv0kXM55OrMKHU+2SpqBcfLpLiTG9EkwDbaM=",
+      "url": "lib\/bootstrap\/dist\/js\/bootstrap.bundle.min.js.map"
+    },
+    {
+      "hash": "sha256-\/RLwRnZGUBkb3BilOx4ca+8tV9eShwBmj5zUY+X+YTM=",
+      "url": "lib\/bootstrap\/dist\/js\/bootstrap.esm.js"
+    },
+    {
+      "hash": "sha256-hGfkfzg1cu9ChwX\/6z1RaVjbFeK4bx126cEtB+IO7do=",
+      "url": "lib\/bootstrap\/dist\/js\/bootstrap.esm.js.map"
+    },
+    {
+      "hash": "sha256-T\/yrYqyd0eKJG6pxxs4IerQ1+esGXoNlM8ubMhUUuMs=",
+      "url": "lib\/bootstrap\/dist\/js\/bootstrap.esm.min.js"
+    },
+    {
+      "hash": "sha256-Hs2FV0pAKULJo5hz\/s0w18kw6v5FMDmWpliIlSOm1bw=",
+      "url": "lib\/bootstrap\/dist\/js\/bootstrap.esm.min.js.map"
+    },
+    {
+      "hash": "sha256-+gwsoaFpGNv6w8iZU2p0rYrOljOF+BERvkuaGsdOliI=",
+      "url": "lib\/bootstrap\/dist\/js\/bootstrap.js"
+    },
+    {
+      "hash": "sha256-Zum+oNpGSVsVIN7jRlxDzhIr2yCXTqMXYDu2ZKT1row=",
+      "url": "lib\/bootstrap\/dist\/js\/bootstrap.js.map"
+    },
+    {
+      "hash": "sha256-FCBHHLy889\/10re5+QpTp2FcQrfYYFbyuWmUez9FOL4=",
+      "url": "lib\/bootstrap\/dist\/js\/bootstrap.min.js"
+    },
+    {
+      "hash": "sha256-BH0UNHEMc2Isboi+xlbEQEC4NxzFDF9J2T9YOhppwJw=",
+      "url": "lib\/bootstrap\/dist\/js\/bootstrap.min.js.map"
+    },
+    {
+      "hash": "sha256-rEpiZc1am7pQswI7rIlQlXjLvgXPm1AIRGORiAKKraQ=",
+      "url": "lib\/easymde\/dist\/easymde.min.css"
+    },
+    {
+      "hash": "sha256-mUeIdDuFgm0TP2EAFEvJVRR3GgaskjwcBB76AM9PxUI=",
+      "url": "lib\/easymde\/dist\/easymde.min.js"
+    },
+    {
+      "hash": "sha256-HmKKK3VimMDCOGPTx1mp\/5Iaip6BWMZy5HMhLc+4o9E=",
+      "url": "lib\/fontawesome\/css\/all.css"
+    },
+    {
+      "hash": "sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=",
+      "url": "lib\/fontawesome\/css\/all.min.css"
+    },
+    {
+      "hash": "sha256-od+5GiKnDVNmdLCLPwpYZPCot2fRpHWtNRL2LvTgucY=",
+      "url": "lib\/fontawesome\/css\/brands.css"
+    },
+    {
+      "hash": "sha256-xN44ju35FR+kTO\/TP\/UkqrVbM3LpqUI1VJCWDGbG1ew=",
+      "url": "lib\/fontawesome\/css\/brands.min.css"
+    },
+    {
+      "hash": "sha256-BOAG+FRWFdheRgSH34Fp1QY2nH+vrHIn0pbk50kCH8o=",
+      "url": "lib\/fontawesome\/css\/fontawesome.css"
+    },
+    {
+      "hash": "sha256-7YMlwkILTJEm0TSengNDszUuNSeZu4KTN3z7XrhUQvc=",
+      "url": "lib\/fontawesome\/css\/fontawesome.min.css"
+    },
+    {
+      "hash": "sha256-oupG5xdQ6jMnVtpDHZxv7kzed5pBASN9Mix54H8G0fg=",
+      "url": "lib\/fontawesome\/css\/regular.css"
+    },
+    {
+      "hash": "sha256-FAKIbnpfWhK6v5Re+NAi9n+5+dXanJvXVFohtH6WAuw=",
+      "url": "lib\/fontawesome\/css\/regular.min.css"
+    },
+    {
+      "hash": "sha256-GoP0kjAL\/eaFVPqPXapYhTfnth9NAnVzrkV3e\/8uics=",
+      "url": "lib\/fontawesome\/css\/solid.css"
+    },
+    {
+      "hash": "sha256-s0DhrAmIsT5gZ3X4f+9wIXUbH52CMiqFAwgqCmdPoec=",
+      "url": "lib\/fontawesome\/css\/solid.min.css"
+    },
+    {
+      "hash": "sha256-2o50dFNOhHEW7Q2VYnIIZfEqdys69EWa2hqXAvTB42E=",
+      "url": "lib\/fontawesome\/css\/svg-with-js.css"
+    },
+    {
+      "hash": "sha256-\/UgkAnLoK01NHLpXJHXWItHP4oVLjgTPUsalJr3ozek=",
+      "url": "lib\/fontawesome\/css\/svg-with-js.min.css"
+    },
+    {
+      "hash": "sha256-K06WFaOnRCyK02YNLAAcPDR0ACl\/w\/UN5iTujm2EmpA=",
+      "url": "lib\/fontawesome\/css\/v4-shims.css"
+    },
+    {
+      "hash": "sha256-dDujvW7I1QbI1s+Nv1S\/bU1HwIkAaQMW4BDX7y+UnLQ=",
+      "url": "lib\/fontawesome\/css\/v4-shims.min.css"
+    },
+    {
+      "hash": "sha256-ODsnYVFywVDzy4WpfUgl1F6qi0QreB6eg1Hn6DS4cG0=",
+      "url": "lib\/fontawesome\/webfonts\/fa-brands-400.eot"
+    },
+    {
+      "hash": "sha256-B1BGgPiGZZsPDYU5rlwBMkuI8wOHYJaHwvKgBQkovd8=",
+      "url": "lib\/fontawesome\/webfonts\/fa-brands-400.ttf"
+    },
+    {
+      "hash": "sha256-4BAp8yePxicM0xpf51PL2mlPu3d+4w6PahOQkIcXiYg=",
+      "url": "lib\/fontawesome\/webfonts\/fa-brands-400.woff"
+    },
+    {
+      "hash": "sha256-HIfSsm3n1VxmA3kWu7TLpseR2g4q36N4MyZ4\/xPhLZ0=",
+      "url": "lib\/fontawesome\/webfonts\/fa-brands-400.woff2"
+    },
+    {
+      "hash": "sha256-xPcnFCIQCPW9\/MkIIczYNczpUkx+yZrV2UdIiTD+FiM=",
+      "url": "lib\/fontawesome\/webfonts\/fa-regular-400.eot"
+    },
+    {
+      "hash": "sha256-peFYCswdP70tIEWyqFvbgpHEdZOenLSAA6\/FAkmbPy4=",
+      "url": "lib\/fontawesome\/webfonts\/fa-regular-400.ttf"
+    },
+    {
+      "hash": "sha256-L6Nthp214NinUr1KOx2zXSVlXheaMd5roz5FaAF+Zvk=",
+      "url": "lib\/fontawesome\/webfonts\/fa-regular-400.woff"
+    },
+    {
+      "hash": "sha256-JFgYsi0exIkvy3IkN+MoiOl\/Y6Axa9Iqr59EzeAfTJE=",
+      "url": "lib\/fontawesome\/webfonts\/fa-regular-400.woff2"
+    },
+    {
+      "hash": "sha256-XET52GjFWRPKWH4Dmfxt8Y8VfFRKCzZq5USoPTLwV9U=",
+      "url": "lib\/fontawesome\/webfonts\/fa-solid-900.eot"
+    },
+    {
+      "hash": "sha256-r4SZUuiBuSz3IGVAqRxf7v4j\/1kQr4MJfLsur\/YUuiA=",
+      "url": "lib\/fontawesome\/webfonts\/fa-solid-900.ttf"
+    },
+    {
+      "hash": "sha256-xwTZ5ne3KFnSnd1zoqY+OxW1pNuQPP9ks8KaBZ4YCHE=",
+      "url": "lib\/fontawesome\/webfonts\/fa-solid-900.woff"
+    },
+    {
+      "hash": "sha256-z+O3OC5HcFnaEb4gmZFLlPDipPCCQMYFQsN2lXuNllg=",
+      "url": "lib\/fontawesome\/webfonts\/fa-solid-900.woff2"
+    },
+    {
+      "hash": "sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq\/8PuOW33aOqmvFpqI=",
+      "url": "lib\/jquery\/jquery.js"
+    },
+    {
+      "hash": "sha256-BbhdlvQf\/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=",
+      "url": "lib\/jquery\/jquery.min.js"
+    },
+    {
+      "hash": "sha256-lKAMx6E5KNizrrPa6MBoiGiBZVWVVaiTNaf2SSwpz9M=",
+      "url": "lib\/jquery\/jquery.min.map"
+    },
+    {
+      "hash": "sha256-4SfVL1FKaHMRn26UQuD6VwvDT+q5pXWEk3OREEzSXVI=",
+      "url": "lib\/popper\/umd\/popper-utils.js"
+    },
+    {
+      "hash": "sha256-Hpf6LnbmoSIArEC3Xuktb3ek5s0CfnR5Y4QtkjCA0r0=",
+      "url": "lib\/popper\/umd\/popper-utils.js.map"
+    },
+    {
+      "hash": "sha256-rWNxsh1\/uYuBZyw4lmy9bdDwfj4AZPgxqa5m976hiIc=",
+      "url": "lib\/popper\/umd\/popper-utils.min.js"
+    },
+    {
+      "hash": "sha256-lB3kQzy8M1LQzJH0\/JY7F6zsH1nofUj6tjXi5z9vEHA=",
+      "url": "lib\/popper\/umd\/popper-utils.min.js.map"
+    },
+    {
+      "hash": "sha256-\/MqPdltDqe7iSoqjNkMb7+w1uk5FJdOpIS7YErWktBQ=",
+      "url": "lib\/popper\/umd\/popper.js"
+    },
+    {
+      "hash": "sha256-FAjA61Vw7TJ5t9appvWzwc3rbmpn4uxgz7Sb\/WCNzZI=",
+      "url": "lib\/popper\/umd\/popper.js.map"
+    },
+    {
+      "hash": "sha256-\/ijcOLwFf26xEYAjW75FizKVo5tnTYiQddPZoLUHHZ8=",
+      "url": "lib\/popper\/umd\/popper.min.js"
+    },
+    {
+      "hash": "sha256-Cd2weQ\/ol\/ezwrmUzCXQWJQqHT8wHt+3qr4a0LghtTU=",
+      "url": "lib\/popper\/umd\/popper.min.js.map"
     },
     {
       "hash": "sha256-\/lf8+4uXlEIQ78sP4Jh0awhofpPi6es+oYruy30fUfQ=",
       "url": "manifest.json"
     },
     {
-      "hash": "sha256-4yLMI8AkC0WExq\/xTdikxB0kJLI0tpge6\/D1rLt8JZU=",
+      "hash": "sha256-BxvyMd9DBsZwFcM5aizjNP8b7BsqyLHmtKBWo7nOQ5Y=",
       "url": "service-worker.register.js"
     },
     {
@@ -183,6 +435,10 @@
     {
       "hash": "sha256-ylNsjz1nxUu9R35\/lf1K9VLdZOVwY280m3c6mPci8IE=",
       "url": "_framework\/global.json"
+    },
+    {
+      "hash": "sha256-n+tlj+nkn9qYObT+r1A\/eeIB3H+98NVhg7eJyHMjeVY=",
+      "url": "_framework\/libman.json"
     },
     {
       "hash": "sha256-FJAXs6yBscK2lYK6EaGFdjKoYyrd4mQA8pvlvt12tbQ=",
@@ -213,7 +469,7 @@
       "url": "_framework\/dotnet.5.0.0-rc.1.20451.14.js"
     },
     {
-      "hash": "sha256-z3ROQcXtK1tAjJB+0zblhkoNvU8ahhvEwTdDCz5y5yU=",
+      "hash": "sha256-9K4fwV2wKVmcHXCDSSC2bxguqarr4HuQT0p+pHc1ZQI=",
       "url": "_framework\/CommonMark.dll"
     },
     {
@@ -289,7 +545,7 @@
       "url": "_framework\/Recollections.Api.Shared.dll"
     },
     {
-      "hash": "sha256-NlzZhAzQy8uYIdzaNHfyxDT9K6avCHVYypRjrb93shc=",
+      "hash": "sha256-nrUxQdeKZJ+sBXcxvEnrsNx5JKx1H2ig1PhRxbWEkaE=",
       "url": "_framework\/Recollections.Blazor.Components.dll"
     },
     {
@@ -297,7 +553,7 @@
       "url": "_framework\/Recollections.Entries.Models.dll"
     },
     {
-      "hash": "sha256-OaM9QzUkd+7OZ4APLYIN1hr6Y29Fjh0OEVaXwrNbEvM=",
+      "hash": "sha256-DIIL8d8tt\/qJepBoomEapFp43aH4Wxg1pV00wRi2ARE=",
       "url": "_framework\/Recollections.Blazor.UI.dll"
     },
     {
@@ -413,7 +669,7 @@
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
-      "hash": "sha256-Qc\/6pwN\/Fh4whcgYVGD3vZ9r9tKZk0iUp3sVHHkwUX8=",
+      "hash": "sha256-BhWhvtoXYdkUsmUqDLiilZ0QtuCF0qQV6CO9P+MePLk=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -421,5 +677,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "oN5NxuQC"
+  "version": "GN9+zWvk"
 };
