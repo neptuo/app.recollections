@@ -1,15 +1,15 @@
 ﻿self.assetsManifest = {
   "assets": [
     {
-      "hash": "sha256-SW2rhJZnC9x81DsIOXxCO8LkfidthS3D4TCzL+koQ1A=",
+      "hash": "sha256-Xi+NOYUkhQ3bxDB\/BApn7WMTSU+fq5rzT4g392i0xMQ=",
       "url": "css\/site.css"
     },
     {
-      "hash": "sha256-qbRncDLOdtAGgL0eKzvXp+9cLHhwXicZESMFhQ2rS7E=",
+      "hash": "sha256-IVVmkdZMq9k1II9XFWQ17Uyq6VycOREAz7NGHBS2yT0=",
       "url": "css\/site.min.css"
     },
     {
-      "hash": "sha256-vvejLZIl1vkcFa4VPnKWvL0iF7t8OTiT6iJpZdmQF+Y=",
+      "hash": "sha256-rKm3GjVJ9e2TP6HMwRFeHn68VtYA7my8F6ZXIHp5\/3Y=",
       "url": "css\/site.scss"
     },
     {
@@ -49,7 +49,7 @@
       "url": "css\/_loading.scss"
     },
     {
-      "hash": "sha256-3f+gn3bFDAkUhPAMUKHV6cr9VcKH73izxk+SSQptidk=",
+      "hash": "sha256-OETv\/rk2cyogiElTm443udTaT+9u3YkPQRg3kJ9wyf0=",
       "url": "css\/_mappage.scss"
     },
     {
@@ -85,7 +85,7 @@
       "url": "img\/thumbnail-placeholder.png"
     },
     {
-      "hash": "sha256-mnPtyXbQrUr5A9cuoHLxtYdcUwpKC9jF6ANYuAGUd9E=",
+      "hash": "sha256-q0mgy9+dOp13ZT8zwD39+2Mfmp6kur0ftdf4DtbJR0c=",
       "url": "index.html"
     },
     {
@@ -469,7 +469,7 @@
       "url": "_framework\/dotnet.5.0.0-rtm.20508.7.js"
     },
     {
-      "hash": "sha256-5tKXbUuoKUkc4jDZclY6wf5rfd0+H02rREvoeBFWZyI=",
+      "hash": "sha256-jO95Gf1Ctn5BgisOA\/p4h9L9YHfID4iRJHnIiWsoAz8=",
       "url": "_framework\/CommonMark.dll"
     },
     {
@@ -553,7 +553,7 @@
       "url": "_framework\/Recollections.Entries.Models.dll"
     },
     {
-      "hash": "sha256-VCRnoHZHhh9\/a6RjFRDHiUEbVVIA4mkYN6BZMs6yHoA=",
+      "hash": "sha256-6d7qpeC2eggrqwNaVm6NdeDUyd4BhqVou5WWaLnAtBA=",
       "url": "_framework\/Recollections.Blazor.UI.dll"
     },
     {
@@ -669,7 +669,7 @@
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
-      "hash": "sha256-ARgu1EPYHJgZ+hVTn6zqVJOvEhCqYq\/hdxma0SQjC60=",
+      "hash": "sha256-aydxyFciPAWm0+kLiOB9g4K6JLCPtrIPxItsOExpI20=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -677,5 +677,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "XBNbN7HL"
+  "version": "hDn\/F7\/2"
 };
