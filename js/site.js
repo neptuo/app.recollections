@@ -75,6 +75,9 @@
 window.ElementReference = {
     Focus: function (element) {
         element.focus();
+    },
+    Blur: function (element) {
+        element.blur();
     }
 };
 
@@ -524,7 +527,6 @@ window.MapInterop = {
             }
 
             model.layer.addMarker(marker);
-
             points.push(point);
         }
 
