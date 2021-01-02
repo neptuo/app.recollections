@@ -73,8 +73,8 @@
 };
 
 window.ElementReference = {
-    Focus: function (element) {
-        element.focus();
+    ScrollIntoView: function (element) {
+        element.scrollIntoView();
     },
     Blur: function (element) {
         element.blur();
@@ -85,21 +85,6 @@ window.Recollections = {
     NavigateTo: function (href) {
         window.location.href = href;
         return true;
-    },
-    SaveToken: function (token) {
-        if ("localStorage" in window) {
-            if (token == null)
-                window.localStorage.removeItem("token");
-            else
-                window.localStorage.setItem("token", token);
-        }
-    },
-    LoadToken: function () {
-        if ("localStorage" in window) {
-            return window.localStorage.getItem("token");
-        }
-
-        return null;
     }
 };
 
