@@ -80,7 +80,7 @@ $dot-diameter: 18px;
             a {
                 color: black;
                 text-decoration: none;
-                
+
                 &:hover {
                     text-decoration: none;
 
@@ -95,10 +95,11 @@ $dot-diameter: 18px;
         .information {
             margin-right: 12px;
             color: #333;
+            white-space: nowrap;
         }
 
-        .oi {
-            font-size: 12px;
+        .placeholder {
+            color: $placeholder-color;
         }
     }
 
@@ -170,4 +171,13 @@ $dot-diameter: 18px;
 
 @media (max-width: 768px) {
     @include narrow;
+
+    .timeline {
+        padding-right: 6px;
+        padding-left: 6px;
+
+        &:before {
+            left: 13px;
+        }
+    }
 }
