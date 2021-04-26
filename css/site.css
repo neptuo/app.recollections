@@ -41,6 +41,16 @@ blockquote {
 a {
   cursor: pointer; }
 
+.lnk-dark-arrow {
+  color: black !important;
+  text-decoration: none; }
+  .lnk-dark-arrow:hover {
+    text-decoration: none; }
+    .lnk-dark-arrow:hover::after {
+      position: absolute;
+      color: salmon;
+      content: "»"; }
+
 .lnk-salmon-arrow {
   color: inherit;
   font-weight: bold;
@@ -69,6 +79,16 @@ a {
   .btn-outline-salmon:hover {
     color: white;
     background-color: lightsalmon; }
+
+.bg-salmon {
+  color: white;
+  background-color: salmon; }
+
+.aspect-1 {
+  aspect-ratio: 1; }
+
+.cursor-pointer {
+  cursor: pointer; }
 
 .loading-bar {
   display: inline-block;
@@ -226,7 +246,7 @@ h4 .inline-editor-viewmode .oi {
   .main-navbar.block-icons {
     padding-top: .25rem;
     padding-bottom: .25rem; }
-    .main-navbar.block-icons .fa, .main-navbar.block-icons .fas {
+    .main-navbar.block-icons .fa, .main-navbar.block-icons .fas, .main-navbar.block-icons .far {
       display: block;
       text-align: center; }
     .main-navbar.block-icons .nav-link {
@@ -241,17 +261,23 @@ h4 .inline-editor-viewmode .oi {
       .main-navbar.block-icons ~ .mappage {
         top: 64px !important; } }
     @media (max-width: 991px) {
-      .main-navbar.block-icons .navbar-nav {
+      .main-navbar.block-icons .large-navbar-nav {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr; }
-        .main-navbar.block-icons .navbar-nav button, .main-navbar.block-icons .navbar-nav a {
+        .main-navbar.block-icons .large-navbar-nav button, .main-navbar.block-icons .large-navbar-nav a {
           width: 100%;
           display: block;
           padding-top: 2.5rem;
           padding-bottom: 2.5rem; }
-      .main-navbar.block-icons .nav-link {
-        padding-top: 2.5rem;
-        padding-bottom: 2.5rem; } }
+        .main-navbar.block-icons .large-navbar-nav .nav-link {
+          padding-top: 2.5rem;
+          padding-bottom: 2.5rem; } }
+    @media (max-width: 450px) {
+      .main-navbar.block-icons .navbar-brand {
+        margin-right: 0; }
+      .main-navbar.block-icons .small-navbar-nav .nav-link {
+        padding-right: .95rem;
+        padding-left: .95rem; } }
 
 .user-navbar {
   flex-direction: row; }
@@ -366,11 +392,12 @@ h4 .inline-editor-viewmode .oi {
       margin-top: -6px;
       font-size: 180%; }
       .entry .body h2 a {
-        color: black;
+        color: black !important;
         text-decoration: none; }
         .entry .body h2 a:hover {
           text-decoration: none; }
           .entry .body h2 a:hover::after {
+            position: absolute;
             color: salmon;
             content: "»"; }
     .entry .body .information {
@@ -668,6 +695,59 @@ h4 .inline-editor-viewmode .oi {
   text-decoration: none; }
   .search a:hover {
     text-decoration: none; }
+
+.calendar .badge, .yearlendar .badge {
+  margin-bottom: .125rem; }
+
+.calendar .bg-salmon, .yearlendar .bg-salmon {
+  display: block;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden; }
+
+.calendar a.bg-salmon, .yearlendar a.bg-salmon {
+  text-decoration: none; }
+  .calendar a.bg-salmon:hover, .yearlendar a.bg-salmon:hover {
+    color: white; }
+
+.calendar .calendar-header,
+.calendar .calendar-cell {
+  width: calc(100% / 7);
+  padding: 8px;
+  border: 0px solid #dee2e6;
+  border-left-width: 1px;
+  border-bottom-width: 1px; }
+  .calendar .calendar-header:last-child,
+  .calendar .calendar-cell:last-child {
+    border-right-width: 1px; }
+
+.calendar .calendar-header {
+  font-weight: bold;
+  border-top-width: 1px; }
+
+.calendar .calendar-cell {
+  aspect-ratio: 1; }
+
+.yearlendar .badge {
+  margin-bottom: .250rem; }
+
+.yearlendar strong {
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.date-picker .btn {
+  border: none !important; }
+
+.date-picker .calendar-header {
+  text-align: center;
+  border-width: 0 !important; }
+  .date-picker .calendar-header .d-lg-inline {
+    display: none !important; }
+
+.date-picker .calendar-cell {
+  display: flex;
+  align-items: stretch;
+  border-width: 0 !important; }
 
 .version {
   color: #aaaaaa; }

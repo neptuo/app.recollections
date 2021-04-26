@@ -1,0 +1,82 @@
+﻿.calendar, .yearlendar {
+    .badge {
+        margin-bottom: .125rem;
+    }
+
+    .bg-salmon {
+        display: block;
+        text-align: left;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    a.bg-salmon {
+        text-decoration: none;
+
+        &:hover {
+            color: white;
+        }
+    }
+}
+
+.calendar {
+    .calendar-header,
+    .calendar-cell {
+        width: calc(100% / 7);
+        padding: 8px;
+        border: 0px solid #dee2e6;
+        border-left-width: 1px;
+        border-bottom-width: 1px;
+
+        &:last-child {
+            border-right-width: 1px;
+        }
+    }
+
+    .calendar-header {
+        font-weight: bold;
+        border-top-width: 1px;
+    }
+
+    .calendar-cell {
+        aspect-ratio: 1;
+    }
+
+    .calendar-row:last-child {
+        .calendar-cell {
+        }
+    }
+}
+
+.yearlendar {
+    .badge {
+        margin-bottom: .250rem;
+    }
+
+    strong {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.date-picker {
+    .btn {
+        border: none !important;
+    }
+
+
+    .calendar-header {
+        text-align: center;
+        border-width: 0 !important;
+
+        .d-lg-inline {
+            display: none !important;
+        }
+    }
+
+    .calendar-cell {
+        display: flex;
+        align-items: stretch;
+        border-width: 0 !important;
+    }
+}

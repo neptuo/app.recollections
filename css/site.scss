@@ -57,6 +57,25 @@ a {
     cursor: pointer;
 }
 
+@mixin dark-arrow() {
+    color: black !important;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+
+        &::after {
+            position: absolute;
+            color: salmon;
+            content: "»";
+        }
+    }
+}
+
+.lnk-dark-arrow {
+    @include dark-arrow;
+}
+
 .lnk-salmon-arrow {
     color: inherit;
     font-weight: bold;
@@ -99,6 +118,19 @@ a {
     }
 }
 
+.bg-salmon {
+    color: white;
+    background-color: salmon;
+}
+
+.aspect-1 {
+    aspect-ratio: 1;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
 @import "_loading.scss";
 @import "_inline-editor.scss";
 @import "_file-upload.scss";
@@ -119,7 +151,7 @@ a {
         padding-top: .25rem;
         padding-bottom: .25rem;
 
-        .fa, .fas {
+        .fa, .fas, .far {
             display: block;
             text-align: center;
         }
@@ -142,7 +174,7 @@ a {
         }
 
         @media (max-width:991px) {
-            .navbar-nav {
+            .large-navbar-nav {
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
 
@@ -152,11 +184,24 @@ a {
                     padding-top: 2.5rem;
                     padding-bottom: 2.5rem;
                 }
+
+                .nav-link {
+                    padding-top: 2.5rem;
+                    padding-bottom: 2.5rem;
+                }
+            }
+        }
+
+        @media (max-width: 450px) {
+            .navbar-brand {
+                margin-right: 0;
             }
 
-            .nav-link {
-                padding-top: 2.5rem;
-                padding-bottom: 2.5rem;
+            .small-navbar-nav {
+                .nav-link {
+                    padding-right: .95rem;
+                    padding-left: .95rem;
+                }
             }
         }
     }
@@ -209,4 +254,5 @@ a {
 @import "_beings.scss";
 @import "_icon-picker.scss";
 @import "_search.scss";
+@import "_calendar.scss";
 @import "_version.scss";
