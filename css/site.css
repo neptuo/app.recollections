@@ -1,4 +1,13 @@
 ﻿@charset "UTF-8";
+::-webkit-scrollbar {
+  width: 8px; }
+
+::-webkit-scrollbar-track {
+  background: #aaaaaa; }
+
+::-webkit-scrollbar-thumb {
+  background: #52585F; }
+
 a:not([href]):not([tabindex]) {
   color: inherit;
   text-decoration: none; }
@@ -246,9 +255,6 @@ h4 .inline-editor-viewmode .oi {
   .main-navbar.block-icons {
     padding-top: .25rem;
     padding-bottom: .25rem; }
-    .main-navbar.block-icons .fa, .main-navbar.block-icons .fas, .main-navbar.block-icons .far {
-      display: block;
-      text-align: center; }
     .main-navbar.block-icons .nav-link {
       text-align: center;
       padding-right: 1.1rem;
@@ -257,6 +263,9 @@ h4 .inline-editor-viewmode .oi {
         .main-navbar.block-icons .nav-link {
           padding-right: 1.5rem;
           padding-left: 1.5rem; } }
+      .main-navbar.block-icons .nav-link .fa, .main-navbar.block-icons .nav-link .fas, .main-navbar.block-icons .nav-link .far {
+        display: block;
+        text-align: center; }
     @media (min-width: 992px) {
       .main-navbar.block-icons ~ .mappage {
         top: 64px !important; } }
@@ -264,11 +273,6 @@ h4 .inline-editor-viewmode .oi {
       .main-navbar.block-icons .large-navbar-nav {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr; }
-        .main-navbar.block-icons .large-navbar-nav button, .main-navbar.block-icons .large-navbar-nav a {
-          width: 100%;
-          display: block;
-          padding-top: 2.5rem;
-          padding-bottom: 2.5rem; }
         .main-navbar.block-icons .large-navbar-nav .nav-link {
           padding-top: 2.5rem;
           padding-bottom: 2.5rem; } }
@@ -299,41 +303,49 @@ h4 .inline-editor-viewmode .oi {
       padding: .375rem .75rem;
       border-radius: .25rem; } }
 
-@media (max-width: 480px) {
+@media (max-width: 510px) {
   footer {
-    font-size: 13px; } }
+    font-size: 13px; }
+    footer .navbar-text {
+      padding: 0; } }
+
+@media (max-width: 410px) {
+  .versions {
+    display: none; } }
 
 .exception-panel {
   margin-top: 24px; }
 
-.component-login form {
+.login {
+  position: absolute;
   width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto; }
-
-.component-login .checkbox {
-  font-weight: 400; }
-
-.component-login .form-control {
-  position: relative;
-  box-sizing: border-box;
-  height: auto;
-  padding: 10px;
-  font-size: 16px; }
-
-.component-login .form-control:focus {
-  z-index: 2; }
-
-.component-login input[type="text"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0; }
-
-.component-login input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0; }
+  height: 100%;
+  overflow: hidden;
+  background: url("/img/background.jpg") center no-repeat;
+  background-size: cover; }
+  .login .card {
+    background-color: #ffffffdd !important; }
+    .login .card .card-title {
+      margin-bottom: 2rem; }
+      .login .card .card-title img {
+        margin-left: 8px; }
+      .login .card .card-title h5 {
+        font-size: 1.15rem; }
+  .login .text-danger .fa {
+    margin-left: 11px;
+    margin-right: 4px; }
+  .login .input-control {
+    position: relative; }
+    .login .input-control .form-control {
+      padding-left: 36px; }
+    .login .input-control .fa {
+      position: absolute;
+      left: 13px;
+      top: 11px;
+      pointer-events: none; }
+  .login .form-check-input {
+    margin-left: -0.75em;
+    margin-right: 0.6em; }
 
 .timeline {
   width: 100%;
@@ -513,11 +525,20 @@ h4 .inline-editor-viewmode .oi {
       .entry-detail .images {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr; } }
     .entry-detail .images .image {
+      position: relative;
       display: flex;
       align-items: center; }
       .entry-detail .images .image a {
         display: block;
         margin: 0 auto; }
+        .entry-detail .images .image a button {
+          position: absolute;
+          right: 6px;
+          top: 6px;
+          display: none; }
+        .entry-detail .images .image a:hover button {
+          display: inline-block;
+          z-index: 1; }
       .entry-detail .images .image img {
         /* Container margin + entry-detail padding */
         width: calc((100vw - 1.5rem - 48px));
@@ -553,6 +574,23 @@ h4 .inline-editor-viewmode .oi {
         position: absolute; }
   .entry-detail .placeholder {
     color: #aaaaaa; }
+
+.pswp__title {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  color: white;
+  text-align: center;
+  font-size: 1.8rem; }
+
+.pswp__button--autoplay {
+  color: white; }
+
+.pswp__autoplay-progress {
+  height: 3px;
+  background: white;
+  position: absolute;
+  bottom: 0px; }
 
 .entry-picker .modal-body {
   padding: 0; }

@@ -29,12 +29,25 @@
         }
 
         .image {
+            position: relative;
             display: flex;
             align-items: center;
 
             a {
                 display: block;
                 margin: 0 auto;
+
+                button {
+                    position: absolute;
+                    right: 6px;
+                    top: 6px;
+                    display: none;
+                }
+
+                &:hover button {
+                    display: inline-block;
+                    z-index: 1;
+                }
             }
 
             img {
@@ -92,4 +105,24 @@
     .placeholder {
         color: $placeholder-color;
     }
+}
+
+.pswp__title {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.pswp__button--autoplay {
+    color: white;
+}
+
+.pswp__autoplay-progress {
+    height: 3px;
+    background: white;
+    position: absolute;
+    bottom: 0px;
 }
