@@ -605,7 +605,7 @@
       "url": "_framework\/Blazored.SessionStorage.dll"
     },
     {
-      "hash": "sha256-K9CAStIbbTWBwdu5QdU7k8Bu06puUwLhXYhoVpxiXDg=",
+      "hash": "sha256-ORGg45xiNAfKPvFJkL+VUPrXUCwkTx4akKWhaUurlUs=",
       "url": "_framework\/CommonMark.dll"
     },
     {
@@ -693,11 +693,11 @@
       "url": "_framework\/Neptuo.dll"
     },
     {
-      "hash": "sha256-gZ9Jf8VSecWYE+XMG452vC5vJDEf9YApVHtm8ajGsUg=",
+      "hash": "sha256-TIT0zf4gPnLdg5U4Wz36Qe1jup8vGgnOcQm6Ff46UqU=",
       "url": "_framework\/Neptuo.Events.dll"
     },
     {
-      "hash": "sha256-Vt9wr\/L5ntN+MYj3pKEigX4JmK+obwOn9Mws4fRDdMM=",
+      "hash": "sha256-\/IxCd5hyr7Hf6xoGcbJ++wWKVbjAVDcG06N1e3ymsgk=",
       "url": "_framework\/Neptuo.Exceptions.dll"
     },
     {
@@ -721,7 +721,7 @@
       "url": "_framework\/Recollections.Entries.Models.dll"
     },
     {
-      "hash": "sha256-Jv9PQueR7lYqYDzGfeJu393BaGIRFfV\/THtYlhA3HvE=",
+      "hash": "sha256-Hd26sVvKM1vKg7C57HGXvB0jACQ7jc9ES\/3cELRCACs=",
       "url": "_framework\/Recollections.Blazor.UI.dll"
     },
     {
@@ -893,7 +893,7 @@
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
-      "hash": "sha256-0qP5H4Uy4rS0UghQcC2R3WcE34nlow6ZMisOt\/5CJGI=",
+      "hash": "sha256-AFFJULT8Nv5NkK986B9wnGnPO+cDTYVFbnLFwBomJD4=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -901,5 +901,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "KkjHNPLl"
+  "version": "dEZD2qMf"
 };
