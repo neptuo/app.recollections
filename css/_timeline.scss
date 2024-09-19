@@ -159,6 +159,22 @@ $dot-diameter: 18px;
     @include narrow;
 }
 
+.entry-detail {
+    .timeline:before {
+        border-radius: 4px;
+    }
+
+    @include narrow;
+
+    .timeline {
+        padding-top: 16px;
+
+        .entry:last-child .body {
+            margin-bottom: 0;
+        }
+    }
+}
+
 @media (max-width: 768px) {
     @include narrow;
 

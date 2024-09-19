@@ -414,7 +414,7 @@ h4 .inline-editor-viewmode .oi {
   background-size: cover;
 }
 .login .card {
-  background-color: #ffffffdd !important;
+  background-color: rgba(255, 255, 255, 0.8666666667) !important;
 }
 .login .card .card-title {
   margin-bottom: 2rem;
@@ -579,11 +579,47 @@ h4 .inline-editor-viewmode .oi {
   margin-left: 0;
 }
 
+.entry-detail .timeline:before {
+  border-radius: 4px;
+}
+.entry-detail .timeline:before {
+  left: 7px;
+}
+.entry-detail .entry .title {
+  position: initial;
+  width: auto;
+  float: none;
+  padding-right: 0;
+  padding-left: 30px;
+  text-align: left;
+  position: relative;
+}
+.entry-detail .entry .title:before {
+  right: auto;
+  left: 0;
+}
+.entry-detail .entry .body {
+  float: none;
+  width: auto;
+}
+.entry-detail .entry-new .date-box {
+  width: 100%;
+  float: none;
+}
+.entry-detail .entry-more {
+  margin-left: 0;
+}
+.entry-detail .timeline {
+  padding-top: 16px;
+}
+.entry-detail .timeline .entry:last-child .body {
+  margin-bottom: 0;
+}
+
 @media (max-width: 768px) {
   .timeline:before {
     left: 7px;
   }
-
   .entry .title {
     position: initial;
     width: auto;
@@ -601,16 +637,13 @@ h4 .inline-editor-viewmode .oi {
     float: none;
     width: auto;
   }
-
   .entry-new .date-box {
     width: 100%;
     float: none;
   }
-
   .entry-more {
     margin-left: 0;
   }
-
   .timeline {
     padding-right: 6px;
     padding-left: 6px;
