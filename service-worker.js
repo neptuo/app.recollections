@@ -6,7 +6,7 @@ self.importScripts('./service-worker-assets.js');
 const cacheNamePrefix = 'offline-cache-';
 const cacheName = `${cacheNamePrefix}${self.assetsManifest.version}`;
 const offlineAssetsInclude = [/\.dll$/, /\.pdb$/, /\.wasm/, /\.html/, /\.js$/, /\.json$/, /\.css$/, /\.woff$/, /\.png$/, /\.jpe?g$/, /\.gif$/, /\.ico$/];
-const offlineAssetsExclude = [/^service-worker\.js$/];
+const offlineAssetsExclude = [/^service-worker\.js$/, /^release-notes\.html$/];
 
 self.addEventListener('install', event => event.waitUntil(onInstall(event)));
 self.addEventListener('activate', event => event.waitUntil(onActivate(event)));
@@ -54,4 +54,4 @@ async function onFetch(event) {
 
     return cachedResponse || fetch(event.request);
 }
-/* Manifest version: t8bAvzhy */
+/* Manifest version: TTUQAI4n */

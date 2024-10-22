@@ -17,7 +17,7 @@ $dot-diameter: 18px;
         left: calc(15%);
         bottom: 0px;
         width: $border-width;
-        background: #ddd;
+        background: var(--bs-secondary-bg);
     }
 
     &:after {
@@ -50,7 +50,7 @@ $dot-diameter: 18px;
             width: $dot-diameter;
             height: $dot-diameter;
             border: $border-width solid salmon;
-            background-color: #fff;
+            background-color: var(--bs-body-bg);
             border-radius: 100%;
             top: 15%;
             right: -11px;
@@ -76,19 +76,15 @@ $dot-diameter: 18px;
         h2 {
             margin-top: -6px;
             font-size: 180%;
-
-            a {
-                @include dark-arrow;
-            }
         }
 
         .information {
             margin-right: 12px;
-            color: #333;
+            color: var(--bs-secondary-color);
             white-space: nowrap;
         }
 
-        .placeholder {
+        .value-placeholder {
             color: $placeholder-color;
         }
     }
@@ -111,7 +107,7 @@ $dot-diameter: 18px;
     position: relative;
     margin-left: calc(15% - 34px);
     margin-bottom: 48px;
-    background: white;
+    background: var(--bs-body-bg);
 }
 
 @mixin narrow() {
@@ -177,13 +173,4 @@ $dot-diameter: 18px;
 
 @media (max-width: 768px) {
     @include narrow;
-
-    .timeline {
-        padding-right: 6px;
-        padding-left: 6px;
-
-        &:before {
-            left: 13px;
-        }
-    }
 }

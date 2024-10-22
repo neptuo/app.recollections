@@ -1,5 +1,15 @@
 ﻿@import "_colors.scss";
 
+@import "../lib/bootstrap/scss/functions";
+$primary: $accent-color;
+
+@import "../lib/bootstrap/scss/variables";
+$theme-colors: map-merge($theme-colors, ( "primary": $primary ));
+
+@import "../lib/bootstrap/scss/bootstrap";
+@import "../lib/fontawesome/css/all.css";
+@import "../lib/easymde/dist/easymde.min.css";
+
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -11,6 +21,7 @@
 ::-webkit-scrollbar-thumb {
     background: #52585F;
 }
+
 
 
 a:not([href]):not([tabindex]) {
@@ -42,12 +53,36 @@ footer.navbar {
 
     a {
         color: $placeholder-color !important;
-        text-decoration: none;
 
         &:hover {
             text-decoration: underline;
         }
     }
+}
+
+.bottom-bar {
+    z-index: 1050;
+    background: var(--bs-body-bg);
+    border-top: 1px solid var(--bs-border-color-translucent);
+
+    .items-6, .items-5, .items-4, .items-3 {
+        span.text {
+            display: none;
+        }
+    }
+}
+
+.toast {
+    z-index: 1060;
+}
+
+.bottom-55 {
+    bottom: 55px;
+}
+
+.offcanvas-bottom-menu {
+    --bs-offcanvas-height: 420px;
+    bottom: 55px;
 }
 
 blockquote {
@@ -70,68 +105,34 @@ a {
     cursor: pointer;
 }
 
-@mixin dark-arrow() {
-    color: black !important;
+a:not(.btn,.nav-link,.dropdown-item) {
+    color: var(--bs-body-color);
     text-decoration: none;
 
     &:hover {
-        text-decoration: none;
-
-        &::after {
-            position: absolute;
-            color: salmon;
-            content: "»";
-        }
+        text-decoration: underline;
     }
 }
 
-.lnk-dark-arrow {
-    @include dark-arrow;
+.dropdown-item .fa,
+.dropdown-item .far,
+.dropdown-item .fas {
+    width: 24px;
+    text-align: center;
 }
 
-.lnk-salmon-arrow {
-    color: inherit;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1.4rem;
-    line-height: 1rem;
-
-    &:hover {
-        color: salmon;
-    }
+.btn-primary {
+    --bs-btn-color: #fff;
 }
 
-.btn-salmon {
-    color: white;
-    border-color: salmon;
-    background-color: salmon;
-
-    &:focus, &:hover {
-        box-shadow: 0 0 0 0.2rem rgba(250, 128, 114, .25);
-    }
-
-    &:hover {
-        color: white;
-        background-color: #e87563;
-    }
+.btn-primary,
+.btn-outline-primary {
+    --bs-btn-hover-color: #fff;
+    --bs-btn-active-color: #fff;
 }
 
-.btn-outline-salmon {
-    color: salmon;
-    border-color: salmon;
-    background-color: transparent;
-
-    &:focus, &:hover {
-        box-shadow: 0 0 0 0.2rem rgba(250, 128, 114, .25);
-    }
-
-    &:hover {
-        color: white;
-        background-color: lightsalmon;
-    }
-}
-
-.bg-salmon {
+.bg-salmon,
+a.bg-salmon {
     color: white;
     background-color: salmon;
 }
@@ -149,29 +150,6 @@ a {
 @import "_file-upload.scss";
 
 .main-navbar {
-    z-index: 2;
-
-    .navbar-toggler {
-        border: none;
-        outline: none;
-
-        &:focus {
-            box-shadow: none;
-        }
-    }
-
-    @media (max-width: 991px) {
-        .menu-collapse {
-            height: 0;
-            transition: height .5s ease-in-out;
-            overflow: hidden;
-
-            &.menu-show {
-                height: 505px;
-            }
-        }
-    }
-
     &.block-icons {
         padding-top: .25rem;
         padding-bottom: .25rem;
@@ -181,45 +159,31 @@ a {
             padding-right: 1.1rem;
             padding-left: 1.1rem;
 
+            @media (max-width: 767px) {
+                padding-top: .3rem;
+                padding-bottom: .3rem;
+            }
+
             @media (min-width:1200px) {
                 padding-right: 1.5rem;
                 padding-left: 1.5rem;
             }
 
             .fa, .fas, .far {
-                display: block;
-                text-align: center;
+                @media (max-width: 767px) {
+                    font-size: 1.3rem;
+                }
+
+                @media (min-width: 768px) {
+                    display: block;
+                    text-align: center;
+                }
             }
         }
 
         @media (min-width:992px) {
             & ~ .mappage {
                 top: 64px !important;
-            }
-        }
-
-        @media (max-width:991px) {
-            .large-navbar-nav {
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr;
-
-                .nav-link {
-                    padding-top: 2.5rem;
-                    padding-bottom: 2.5rem;
-                }
-            }
-        }
-
-        @media (max-width: 450px) {
-            .navbar-brand {
-                margin-right: 0;
-            }
-
-            .small-navbar-nav {
-                .nav-link {
-                    padding-right: .95rem;
-                    padding-left: .95rem;
-                }
             }
         }
     }

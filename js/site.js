@@ -1,31 +1,59 @@
 ﻿window.Bootstrap = {
     Modal: {
         Show: function (container) {
-            var modal = bootstrap.Modal.getInstance(container);
-            if (modal == null) {
-                modal = new bootstrap.Modal(container, {
-                    "show": true,
-                    "focus": true
-                });
-            
-                container.addEventListener('shown.bs.modal', function () {
-                    $(container).find("input").first().trigger('focus');
+            var $container = $(container);
+            if (!$container.data("modal-initialized")) {
+                var modal = new bootstrap.Modal(container, {});
+                $container.data("modal", modal);
+
+                $container.data("modal-initialized", true).on('shown.bs.modal', function () {
+                    var $select = $container.find("[data-select]");
+                    if ($select.length > 0) {
+                        $select[0].setSelectionRange(0, $select[0].value.length)
+                    }
+
+                    const autofocus = $container.find('[data-autofocus]');
+                    if (autofocus.length > 0) {
+                        autofocus.first().trigger('focus');
+                    } else {
+                        $container.find("input").first().trigger('focus');
+                    }
                 });
             }
 
-            modal.show();
+            $container.data("modal").show();
         },
         Hide: function (container) {
-            var modal = bootstrap.Modal.getInstance(container);
-            if (modal != null) {
-                modal.hide();
-            }
+            $(container).data("modal").hide();
+        },
+        IsOpen: function (container) {
+            return $(container).hasClass("show");
         },
         Dispose: function (container) {
-            var modal = bootstrap.Modal.getInstance(container);
-            if (modal != null) {
-                modal.dispose();
+            $(container).data("modal").dispose();
+        }
+    },
+    Offcanvas: {
+        Initialize: function (interop, container) {
+            let offcanvas = bootstrap.Offcanvas.getInstance(container);
+            if (!offcanvas) {
+                offcanvas = new bootstrap.Offcanvas(container);
+                container.addEventListener("show.bs.offcanvas", () => {
+                    interop.invokeMethodAsync("Offcanvas.VisibilityChanged", true);
+                });
+                container.addEventListener("hide.bs.offcanvas", () => {
+                    interop.invokeMethodAsync("Offcanvas.VisibilityChanged", false);
+                });
             }
+        },
+        Show: function (container) {
+            bootstrap.Offcanvas.getInstance(container).show()
+        },
+        Hide: function (container) {
+            bootstrap.Offcanvas.getInstance(container).hide();
+        },
+        Dispose: function (container) {
+            bootstrap.Offcanvas.getInstance(container).dispose();
         }
     },
     Tooltip: {
@@ -95,6 +123,14 @@
                 popover.dispose();
             }
         }
+    },
+    Theme: {
+        Apply: function (theme) {
+            document.documentElement.setAttribute("data-bs-theme", theme);
+        },
+        GetBrowserPreference: function () {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        }
     }
 };
 
@@ -104,6 +140,9 @@ window.ElementReference = {
     },
     Blur: function (element) {
         element.blur();
+    },
+    GetValue: function (input) {
+        return $(input).val();
     }
 };
 
@@ -114,8 +153,11 @@ window.Recollections = {
     },
     SetTitle: function (title) {
         document.title = title;
-    }
+    },
+    WaitForDotNet: () => window.Recollections._DotNetPromise,
+    DotNetReady: () => window.Recollections._DotNetPromiseResolve()
 };
+window.Recollections._DotNetPromise = new Promise(resolve => window.Recollections._DotNetPromiseResolve = resolve);
 
 window.InlineMarkdownEdit = {
     Initialize: function (interop, textArea, value) {
@@ -226,25 +268,6 @@ window.InlineDateEdit = {
         return $(input).val();
     }
 };
-
-window.DatePicker = {
-    Initialize: function (input, format) {
-        $(input).datepicker({
-            format: format.toLowerCase(),
-            autoclose: true,
-            todayHighlight: true,
-            todayBtn: "linked"
-        });
-    },
-    Destroy: function (input) {
-        if (input != null) {
-            $(input).datepicker("destroy");
-        }
-    },
-    GetValue: function (input) {
-        return $(input).val();
-    }
-}
 
 window.Downloader = {
     FromUrlAsync: function (name, url) {

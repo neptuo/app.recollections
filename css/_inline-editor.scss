@@ -60,6 +60,10 @@
 .inline-editor-viewmode {
     a.inline-editor-value {
         cursor: inherit;
+        
+        &:hover {
+            text-decoration: none;
+        }
     }
 
     &.inline-editable a.inline-editor-value {
@@ -149,5 +153,20 @@ h4 {
         .card-body {
             padding: 4px;
         }
+    }
+}
+
+input.input-number-noarrows
+{
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    &[type=number] {
+        -moz-appearance: textfield;
     }
 }
