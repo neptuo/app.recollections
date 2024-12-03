@@ -1,4 +1,5 @@
-﻿// Caution! Be sure you understand the caveats before publishing an application with
+/* Manifest version: CGa/WeST */
+// Caution! Be sure you understand the caveats before publishing an application with
 // offline support. See https://aka.ms/blazor-offline-considerations
 
 self.importScripts('./service-worker-assets.js');
@@ -54,4 +55,3 @@ async function onFetch(event) {
 
     return cachedResponse || fetch(event.request);
 }
-/* Manifest version: TTUQAI4n */
