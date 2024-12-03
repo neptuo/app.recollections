@@ -42,7 +42,7 @@ self.assetsManifest = {
       "url": "_content/Recollections.Blazor.Components/leaflet/leaflet-src.js"
     },
     {
-      "hash": "sha256-l7cBxd/w6YZOXEWKixXC7DN4ejJsXed7kI+eoTvi1Wo=",
+      "hash": null,
       "url": "_content/Recollections.Blazor.Components/leaflet/leaflet-src.js.map"
     },
     {
@@ -50,7 +50,7 @@ self.assetsManifest = {
       "url": "_content/Recollections.Blazor.Components/leaflet/leaflet-src.min.js"
     },
     {
-      "hash": "sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=",
+      "hash": null,
       "url": "_content/Recollections.Blazor.Components/leaflet/leaflet.css"
     },
     {
