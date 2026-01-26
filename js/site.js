@@ -6,17 +6,30 @@
                 var modal = new bootstrap.Modal(container, {});
                 $container.data("modal", modal);
 
-                $container.data("modal-initialized", true).on('shown.bs.modal', function () {
+                $container.data("modal-initialized", true);
+                
+                $container.on('shown.bs.modal', function () {
+                    if ($container.data("autofocus") === undefined) {
+                        return;
+                    }
+
                     var $select = $container.find("[data-select]");
                     if ($select.length > 0) {
                         $select[0].setSelectionRange(0, $select[0].value.length)
                     }
 
                     const autofocus = $container.find('[data-autofocus]');
+                    let targetFocusElement;
                     if (autofocus.length > 0) {
-                        autofocus.first().trigger('focus');
+                        targetFocusElement = autofocus.first();
                     } else {
-                        $container.find("input").first().trigger('focus');
+                        targetFocusElement = $container.find("input").first();
+                    }
+
+                    if (targetFocusElement.length > 0)
+                    {
+                        targetFocusElement[0].scrollIntoView(true);
+                        targetFocusElement.trigger('focus');
                     }
                 });
             }
@@ -24,7 +37,7 @@
             $container.data("modal").show();
         },
         Hide: function (container) {
-            $(container).data("modal").hide();
+            $(container).data("modal")?.hide();
         },
         IsOpen: function (container) {
             return $(container).hasClass("show");
@@ -54,6 +67,10 @@
         },
         Dispose: function (container) {
             bootstrap.Offcanvas.getInstance(container).dispose();
+
+            // If the offcanvas was shown, the body styles are not reset on dispose.
+            document.body.style.paddingRight = null;
+            document.body.style.overflow = null;
         }
     },
     Tooltip: {
@@ -178,6 +195,7 @@ window.InlineMarkdownEdit = {
                 "|",
                 "bold",
                 "italic",
+                "strikethrough",
                 "|",
                 "unordered-list",
                 "ordered-list",
@@ -186,20 +204,20 @@ window.InlineMarkdownEdit = {
                 "quote",
                 "horizontal-rule",
                 {
-                    name: "cancel",
-                    className: "fa fa-times float-end",
-                    title: "Close Editor",
-                    action: function (editor) {
-                        interop.invokeMethodAsync("Markdown.OnCancel");
-                    }
-                },
-                {
                     name: "save",
-                    className: "fa fa-check float-end",
+                    className: "fa fa-check ms-auto",
                     title: "Save",
                     action: function (editor) {
                         var value = editor.value();
                         interop.invokeMethodAsync("Markdown.OnSave", value);
+                    }
+                },
+                {
+                    name: "cancel",
+                    className: "fa fa-times",
+                    title: "Close Editor",
+                    action: function (editor) {
+                        interop.invokeMethodAsync("Markdown.OnCancel");
                     }
                 }
             ],
